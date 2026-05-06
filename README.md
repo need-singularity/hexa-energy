@@ -1,4 +1,4 @@
-## hexa-energy ⚡
+# ⚡ hexa-energy
 
 > **Cross-link**: fusion → [`need-singularity/hexa-fusion`](https://github.com/need-singularity/hexa-fusion) · RT-SC → [`need-singularity/hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc) · climate cousin → [`need-singularity/hexa-earth`](https://github.com/need-singularity/hexa-earth)
 
