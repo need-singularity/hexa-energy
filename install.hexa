@@ -1,0 +1,67 @@
+// install.hexa — hx build hook for hexa-energy.
+//
+// Invoked by `hx install hexa-energy` (hexa-lang package manager) right after
+// the GitHub checkout (or symlink from /Users/ghost/core/hexa-energy) lands in
+// $HX_PKG_DIR. hx passes:
+//   HX_PKG_DIR     — absolute path to the package root
+//   HX_BIN_DIR     — ~/.hx/bin
+//   HX_PKG_NAME    — "hexa-energy"
+//   HX_HOOK_PHASE  — "pre" | "post" | "both" (default: "both")
+//
+// Mirrors hexa-bio/install.hexa pattern (sister substrate, 2026-05-04).
+//
+// Responsibilities (each idempotent, raw#9 STRICT — no .py creation):
+//   1. Pre-install: no python deps required (v1.0.0 is spec-first; no
+//      numerical kernels yet). Exit 0.
+//   2. Post-install: run `hexa-energy selftest` via the freshly-staged
+//      cli/hexa-energy.hexa. Selftest output captured; non-PASS = warn-only
+//      (not a blocker — selftest just counts the 14-verb spec directories).
+//
+// raw#9 hexa-only, raw#11 snake_case, raw#15 no-hardcode.
+// raw#10 honest C3: see hexa-energy/README.md "Status" section.
+
+fn run_quick_selftest(root: str) -> bool {
+    let cli = root + "/cli/hexa-energy.hexa"
+    let exists = exec("[ -f \"" + cli + "\" ] && echo y || echo n").trim()
+    if exists != "y" {
+        eprintln("[hexa-energy/install] WARN: cli/hexa-energy.hexa missing — skip selftest")
+        return false
+    }
+    println("[hexa-energy/install] [post] running quick selftest (14-verb count check)")
+    let cmd = "HEXA_ENERGY_ROOT=\"" + root + "\" hexa run \"" + cli + "\" selftest 2>&1"
+    let raw = exec(cmd)
+    if raw.contains("__HEXA_ENERGY_SELFTEST__ PASS") {
+        println("[hexa-energy/install]   selftest PASS — 14/14 verb dirs present")
+        return true
+    }
+    eprintln("[hexa-energy/install] WARN: selftest non-PASS (warn-only, not a blocker)")
+    eprintln("  hint: missing verb directory or sentinel mismatch — see README §Status")
+    return false
+}
+
+fn main() -> void {
+    let mut root = env("HX_PKG_DIR")
+    if root == "" { root = exec("pwd").trim() }
+    let phase = env("HX_HOOK_PHASE")
+    let mut p = phase
+    if p == "" { p = "both" }
+    println("[hexa-energy/install] HX_PKG_DIR=" + root + " phase=" + p)
+
+    let entry = root + "/cli/hexa-energy.hexa"
+    let entry_ok = exec("[ -f \"" + entry + "\" ] && echo y || echo n").trim()
+    if entry_ok != "y" {
+        eprintln("[hexa-energy/install] ERROR: canonical entry missing: " + entry)
+        exit(1)
+    }
+    println("[hexa-energy/install] canonical entry OK: cli/hexa-energy.hexa")
+
+    if p == "pre" || p == "both" {
+        println("[hexa-energy/install] [pre] no python deps (v1.0.0 spec-first) — skip")
+    }
+
+    if p == "post" || p == "both" {
+        let _ = run_quick_selftest(root)  // warn-only
+    }
+
+    println("[hexa-energy/install] done — hx will generate " + env("HX_BIN_DIR") + "/hexa-energy shim")
+}

@@ -1,0 +1,58 @@
+#!hexa strict
+// tests/test_selftest.hexa — full 14-verb selftest harness
+//
+// Pass criterion: __HEXA_ENERGY_SELFTEST__ PASS sentinel present
+// (and 14 verb directories accounted for).
+//
+// Cost: $0 (orchestrates the placeholder dispatcher; no numerical work).
+
+let VERB_DIRS: [str] = [
+    "battery_arch", "battery_energy",
+    "nuclear", "smr_dc", "dc_reactor",
+    "grid", "pv_microgrid", "solar",
+    "pemfc",
+    "hvac", "thermal",
+    "mineshaft",
+    "arch", "efficiency",
+]
+
+fn _dir_exists(p: str) -> bool {
+    let r = exec("[ -d \"" + p + "\" ] && echo yes || echo no").trim()
+    return r == "yes"
+}
+
+fn main() {
+    let mut root = env("HEXA_ENERGY_ROOT")
+    if root.len() == 0 { root = exec("pwd").trim() }
+
+    // ── direct verb-dir count check (offline guard) ──
+    let mut missing: [str] = []
+    for v in VERB_DIRS {
+        if _dir_exists(root + "/" + v) == false { missing = missing + [v] }
+    }
+    let n_present = 14 - missing.len()
+    println("test_selftest: verb-dirs present = " + str(n_present) + " / 14")
+    if missing.len() > 0 {
+        println("test_selftest: FAIL — missing dirs:")
+        for m in missing { println("  - " + m) }
+        exit(1)
+    }
+
+    // ── CLI round-trip via dispatcher ──
+    let cli = root + "/cli/hexa-energy.hexa"
+    let cli_ok = exec("[ -f \"" + cli + "\" ] && echo y || echo n").trim()
+    if cli_ok != "y" {
+        println("test_selftest: FAIL — cli/hexa-energy.hexa missing")
+        exit(1)
+    }
+
+    let cmd = "HEXA_ENERGY_ROOT=\"" + root + "\" hexa run \"" + cli + "\" selftest 2>&1"
+    let raw = exec(cmd)
+    if raw.contains("__HEXA_ENERGY_SELFTEST__ PASS") {
+        println("test_selftest: PASS — 14/14 verbs + dispatcher sentinel OK")
+        return
+    }
+    println("test_selftest: FAIL — sentinel not found")
+    println(raw.trim())
+    exit(1)
+}

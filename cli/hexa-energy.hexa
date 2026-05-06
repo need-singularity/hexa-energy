@@ -1,0 +1,336 @@
+#!hexa strict
+// hexa-energy/cli/hexa-energy.hexa — standalone hexa-energy CLI router (placeholder dispatcher)
+//
+// 14-verb / 7-group Energy substrate router (spec-first; .hexa kernels TBD):
+//
+//   battery     group → battery_arch, battery_energy
+//   nuclear     group → nuclear, smr_dc, dc_reactor
+//   grid        group → grid, pv_microgrid, solar
+//   fuel-cell   group → pemfc
+//   thermal     group → hvac, thermal
+//   mining      group → mineshaft
+//   meta        group → arch, efficiency
+//
+// Plus utility subcmds:
+//   status      — verb status table (0/14 wired, 14/14 spec)
+//   selftest    — verify all 14 verb dirs exist (sentinel sweep)
+//   help        — this help
+//   --version   — print version
+//
+// Cross-link sister substrates:
+//   need-singularity/hexa-fusion  — fusion energy (별도 standalone)
+//   need-singularity/hexa-rtsc    — RT-SC (별도 standalone)
+//   need-singularity/hexa-earth   — climate cousin (carbon-capture · env-protection)
+//
+// Root resolution: $HEXA_ENERGY_ROOT env, else inferred from $0 dirname.
+//
+// Constraints:
+//   raw#9   — hexa-only orchestration; no python kernels at v1.0.0
+//   raw#15  — write-confined (audit log only)
+//   raw#10  — honest C3 caveats embedded
+//
+// Cost: $0 (Mac local; spec-first dispatcher, no numerical workload).
+//
+// @no-lock-needed
+// @resolver-bypass(reason="Pure local CLI placeholder; verb modules are spec-only at v1.0.0.")
+
+let VERSION = "1.0.0"
+
+// ─── env / path resolve ───
+
+let HOME = env("HOME")
+let HEXA_ENERGY_ROOT_ENV = env("HEXA_ENERGY_ROOT")
+
+fn hexa_energy_root() -> str {
+    if HEXA_ENERGY_ROOT_ENV.len() > 0 { return HEXA_ENERGY_ROOT_ENV }
+    let inferred = exec("dirname \"$(dirname \"$0\")\" 2>/dev/null || true").trim()
+    if inferred.len() > 0 { return inferred }
+    return HOME + "/.hexa-energy"  // @allow-devpath
+}
+
+let HE = hexa_energy_root()
+let HEXA_BIN = exec("command -v hexa 2>/dev/null || echo hexa").trim()
+
+// 14 verb directories (each holds the spec markdown extracted from n6-arch).
+let VERB_DIRS: [str] = [
+    "battery_arch", "battery_energy",
+    "nuclear", "smr_dc", "dc_reactor",
+    "grid", "pv_microgrid", "solar",
+    "pemfc",
+    "hvac", "thermal",
+    "mineshaft",
+    "arch", "efficiency",
+]
+
+let LOG_PATH = HE + "/state/hexa_energy_cli.log"
+
+// ─── arg helpers ───
+
+fn shq(s: str) -> str {
+    return "'" + s.replace("'", "'\\''") + "'"
+}
+
+fn has_flag(a: [str], flag: str) -> bool {
+    for x in a {
+        if x == flag { return true }
+    }
+    return false
+}
+
+fn json_mode(a: [str]) -> bool {
+    return has_flag(a, "--json")
+}
+
+// ─── audit log (jsonl) ───
+
+fn _ts_now() -> str {
+    return exec("date -u '+%Y-%m-%dT%H:%M:%SZ'").trim()
+}
+
+fn _audit(subcmd: str, args_str: str, exit_code: int) {
+    let line = "{\"ts\":\"" + _ts_now() + "\",\"caller\":\"hexa_energy_standalone\",\"subcmd\":\"hexa-energy " +
+               subcmd + "\",\"args\":\"" + args_str.replace("\"", "\\\"") +
+               "\",\"exit_code\":" + str(exit_code) + ",\"version\":\"" + VERSION + "\"}"
+    exec("mkdir -p " + shq(HE + "/state") + " 2>/dev/null")
+    exec("echo " + shq(line) + " >> " + shq(LOG_PATH) + " 2>/dev/null")
+}
+
+// ─── verb-dir helpers ───
+
+fn _dir_exists(p: str) -> bool {
+    let r = exec("[ -d " + shq(p) + " ] && echo yes || echo no").trim()
+    return r == "yes"
+}
+
+fn _count_present_verbs() -> int {
+    let mut n = 0
+    for v in VERB_DIRS {
+        if _dir_exists(HE + "/" + v) { n = n + 1 }
+    }
+    return n
+}
+
+// ─── caveat printer (raw#10 honest C3) ───
+
+fn _print_caveats() {
+    println("")
+    println("--- caveats (raw#10 C3) ---")
+    println("  1. v1.0.0 is SPEC-FIRST: 0/14 verbs ship a working .hexa kernel.")
+    println("     All 14 verb directories contain markdown specs extracted from")
+    println("     n6-architecture/domains/energy/ @ c0f1f570 (no numerical impl).")
+    println("  2. Fusion is OUT OF SCOPE — see need-singularity/hexa-fusion.")
+    println("  3. RT-SC (room-temp superconductor) is OUT OF SCOPE — see")
+    println("     need-singularity/hexa-rtsc.")
+    println("  4. Climate / carbon-capture / environmental-protection lives in")
+    println("     need-singularity/hexa-earth (cousin substrate).")
+    println("  5. selftest PASS = 14 verb directories present; does NOT imply any")
+    println("     empirical claim has been validated.")
+}
+
+// ─── group routing ───
+
+fn _verbs_in_group(group: str) -> [str] {
+    if group == "battery"   { return ["battery_arch", "battery_energy"] }
+    if group == "nuclear"   { return ["nuclear", "smr_dc", "dc_reactor"] }
+    if group == "grid"      { return ["grid", "pv_microgrid", "solar"] }
+    if group == "fuel-cell" || group == "fuel_cell" { return ["pemfc"] }
+    if group == "thermal"   { return ["hvac", "thermal"] }
+    if group == "mining"    { return ["mineshaft"] }
+    if group == "meta"      { return ["arch", "efficiency"] }
+    return []
+}
+
+fn cmd_group(group: str, a: [str]) {
+    let verbs = _verbs_in_group(group)
+    if verbs.len() == 0 {
+        eprintln("hexa-energy: unknown group '" + group + "'")
+        eprintln("  groups: battery | nuclear | grid | fuel-cell | thermal | mining | meta")
+        _audit(group, "", 2)
+        exit(2)
+    }
+    println("hexa-energy " + VERSION + " — group: " + group)
+    println("  verbs (" + str(verbs.len()) + "):")
+    for v in verbs {
+        let present = _dir_exists(HE + "/" + v)
+        let mark = if present { "OK " } else { "??" }
+        println("    [" + mark + "] " + v + "    (spec: " + v + "/)")
+    }
+    println("")
+    println("  status: SPEC_FIRST — markdown only at v1.0.0; .hexa kernels TBD")
+    if json_mode(a) {
+        println("{\"hexa_energy\":\"" + VERSION + "\",\"subcmd\":\"" + group + "\",\"verbs\":" +
+                str(verbs.len()) + ",\"status\":\"spec_first\"}")
+    }
+    _audit(group, "", 0)
+}
+
+// ─── subcommand: status ───
+
+fn cmd_status(a: [str]) {
+    let n_present = _count_present_verbs()
+    if json_mode(a) {
+        let mut js = "{\"hexa_energy\":\"" + VERSION + "\",\"subcmd\":\"status\","
+        js = js + "\"verbs_total\":14,\"groups_total\":7,"
+        js = js + "\"verbs_wired\":0,\"verbs_spec\":" + str(n_present) + ","
+        js = js + "\"verdict\":\"SPEC_FIRST\","
+        js = js + "\"crosslink\":{\"fusion\":\"hexa-fusion\",\"rtsc\":\"hexa-rtsc\",\"earth\":\"hexa-earth\"}"
+        js = js + "}"
+        println(js)
+        return
+    }
+
+    println("hexa-energy " + VERSION + " status — 14-verb / 7-group Energy substrate")
+    println("")
+    println("  group        verbs                                          status")
+    println("  ----------   --------------------------------------------   ----------")
+    println("  battery      battery_arch, battery_energy                   SPEC_FIRST")
+    println("  nuclear      nuclear, smr_dc, dc_reactor                    SPEC_FIRST")
+    println("  grid         grid, pv_microgrid, solar                      SPEC_FIRST")
+    println("  fuel-cell    pemfc                                          SPEC_FIRST")
+    println("  thermal      hvac, thermal                                  SPEC_FIRST")
+    println("  mining       mineshaft                                      SPEC_FIRST")
+    println("  meta         arch, efficiency                               SPEC_FIRST")
+    println("")
+    println("  verb-dirs present: " + str(n_present) + " / 14")
+    println("  verdict: SPEC_FIRST (0/14 .hexa kernels wired; 14/14 markdown specs)")
+    println("")
+    println("  cross-link sisters (out of scope here):")
+    println("    fusion → need-singularity/hexa-fusion")
+    println("    rtsc   → need-singularity/hexa-rtsc")
+    println("    earth  → need-singularity/hexa-earth (climate cousin)")
+    _print_caveats()
+}
+
+// ─── subcommand: selftest ───
+
+fn cmd_selftest(a: [str]) {
+    let mut missing: [str] = []
+    for v in VERB_DIRS {
+        if _dir_exists(HE + "/" + v) == false { missing = missing + [v] }
+    }
+    let n_present = 14 - missing.len()
+    println("hexa-energy selftest — 14-verb directory sentinel sweep")
+    println("  present: " + str(n_present) + " / 14")
+    if missing.len() > 0 {
+        println("  MISSING:")
+        for m in missing {
+            println("    - " + m)
+        }
+        println("__HEXA_ENERGY_SELFTEST__ FAIL")
+        if json_mode(a) {
+            println("{\"hexa_energy\":\"" + VERSION + "\",\"subcmd\":\"selftest\",\"verdict\":\"FAIL\",\"present\":" + str(n_present) + "}")
+        }
+        _audit("selftest", "", 1)
+        exit(1)
+    }
+    println("__HEXA_ENERGY_SELFTEST__ PASS")
+    if json_mode(a) {
+        println("{\"hexa_energy\":\"" + VERSION + "\",\"subcmd\":\"selftest\",\"verdict\":\"PASS\",\"present\":14}")
+    }
+    _print_caveats()
+    _audit("selftest", "", 0)
+}
+
+// ─── version ───
+
+fn cmd_version() {
+    println("hexa-energy " + VERSION)
+    println("standalone Energy substrate (HEXA family — extracted from n6-architecture@c0f1f570 on 2026-05-06)")
+    println("license: MIT")
+    println("repo:    https://github.com/need-singularity/hexa-energy")
+    println("sisters: hexa-fusion (fusion) · hexa-rtsc (RT-SC) · hexa-earth (climate)")
+}
+
+// ─── help ───
+
+fn cmd_help() {
+    println("hexa-energy " + VERSION + " — standalone Energy substrate CLI (placeholder dispatcher)")
+    println("")
+    println("usage: hexa-energy <subcmd> [flags...]")
+    println("")
+    println("group subcommands (7 groups / 14 verbs — spec-first, .hexa kernels TBD):")
+    println("  battery         battery_arch, battery_energy                  [SPEC]")
+    println("  nuclear         nuclear, smr_dc, dc_reactor                   [SPEC]")
+    println("  grid            grid, pv_microgrid, solar                     [SPEC]")
+    println("  fuel-cell       pemfc                                          [SPEC]")
+    println("  thermal         hvac, thermal                                  [SPEC]")
+    println("  mining          mineshaft                                      [SPEC]")
+    println("  meta            arch, efficiency                               [SPEC]")
+    println("")
+    println("utility subcommands:")
+    println("  status          14-verb table + verdict + caveats")
+    println("  selftest        verify 14 verb dirs present (__HEXA_ENERGY_SELFTEST__ PASS)")
+    println("")
+    println("global flags:")
+    println("  --version       show version")
+    println("  --json          machine-parseable JSON tail")
+    println("  --help, -h      this help")
+    println("")
+    println("env:")
+    println("  HEXA_ENERGY_ROOT   override repo root (default: inferred from $0)")
+    println("")
+    println("cross-link sisters (NOT in this repo — see standalone substrates):")
+    println("  fusion → need-singularity/hexa-fusion")
+    println("  rtsc   → need-singularity/hexa-rtsc")
+    println("  earth  → need-singularity/hexa-earth")
+    println("")
+    println("cost estimate (Mac local): $0 — spec-first dispatcher only.")
+    println("")
+    println("verb spec dir: " + HE)
+}
+
+// ─── main ───
+
+fn main() {
+    let _raw = args()
+    let mut _sidx = -1
+    let mut _i = 0
+    while _i < _raw.len() {
+        if _raw[_i].ends_with(".hexa") { _sidx = _i; break }
+        _i = _i + 1
+    }
+    let mut _user_start = 2
+    if _sidx >= 0 { _user_start = _sidx + 1 }
+
+    let mut a: [str] = ["hexa_energy_cli", "hexa_energy_router"]
+    let mut _ua = _user_start
+    while _ua < _raw.len() {
+        a = a + [_raw[_ua]]
+        _ua = _ua + 1
+    }
+    let n = len(a)
+
+    if n < 3 {
+        cmd_help()
+        return
+    }
+
+    let sub = a[2]
+
+    if sub == "--version" || sub == "-V" || sub == "version" {
+        cmd_version()
+        return
+    }
+
+    if has_flag(a, "--help") || has_flag(a, "-h") {
+        cmd_help()
+        return
+    }
+
+    if sub == "help" { cmd_help(); return }
+
+    if sub == "status" {
+        cmd_status(a)
+    } else if sub == "selftest" {
+        cmd_selftest(a)
+    } else if sub == "battery" || sub == "nuclear" || sub == "grid" ||
+              sub == "fuel-cell" || sub == "fuel_cell" ||
+              sub == "thermal" || sub == "mining" || sub == "meta" {
+        cmd_group(sub, a)
+    } else {
+        eprintln("hexa-energy: unknown subcommand '" + sub + "'")
+        eprintln("run 'hexa-energy help' for usage")
+        _audit(sub, "", 2)
+        exit(2)
+    }
+}
