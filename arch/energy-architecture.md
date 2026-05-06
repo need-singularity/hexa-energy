@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/energy-architecture/energy-architecture.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: dcacddff9b053e418b26837088a80523 -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: energy-architecture

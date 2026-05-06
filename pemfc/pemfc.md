@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/pemfc/pemfc.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: 1ae523d4cd00a8d83a0a176682e73240 -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: pemfc

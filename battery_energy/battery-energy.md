@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/battery-energy/battery-energy.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: 0c603dd68a5a00e366acd50640bcd21c -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: battery-energy

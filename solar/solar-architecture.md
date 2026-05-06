@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/solar-architecture/solar-architecture.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: eb610533130419786e340e2cad119ca7 -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: solar-architecture

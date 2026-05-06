@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/rooftop-pv-2nd-life-microgrid/rooftop-pv-2nd-life-microgrid.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: 55d056fd71fe5f8b28582f5cef2d464d -->
 <!-- gold-standard: shared/harness/sample.md -->
 <!-- @doc(type=paper) -->
 ---

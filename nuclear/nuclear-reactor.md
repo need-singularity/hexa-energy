@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/nuclear-reactor/nuclear-reactor.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: efde6b6ef12278aba75d1f3c2cf29edd -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: nuclear-reactor

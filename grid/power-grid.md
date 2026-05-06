@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/power-grid/power-grid.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: a7d2c96d6eddb44a56a5412d5dbe5f57 -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: power-grid

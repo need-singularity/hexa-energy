@@ -1,3 +1,6 @@
+<!-- @canonical: n6-architecture@0570a835:domains/energy/hvac-system/hvac-system.md -->
+<!-- @extracted: 2026-05-06 -->
+<!-- @md5_at_extraction: b0504f8c45c4099cc1c4c23f3bca791f -->
 <!-- gold-standard: shared/harness/sample.md -->
 ---
 domain: hvac-system
