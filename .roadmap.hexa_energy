@@ -1,0 +1,60 @@
+# .roadmap.hexa_energy — repo-overall tracker
+
+> Cross-cutting state: invariant lattice, release cadence, cycle history,
+> deadlines, pointers. Sister of `hexa-fusion` / `hexa-rtsc` / `hexa-earth`
+> under `need-singularity` org. **fusion·RT-SC 별도 standalone**.
+
+**Last sync**: 2026-05-06 · **Current release**: v1.0.0 · **Branch**: `main`
+
+---
+
+## §0 Terminal goal — 14-verb energy substrate (7 그룹 모두 wired)
+
+hexa-energy 도착지 = **14-verb energy substrate (battery + nuclear + grid + fuel-cell + thermal + mining + meta) 모두 working spec + 각 그룹 1+ verb wired .hexa**.
+
+DoD:
+1. `battery` 그룹 EV cycle-life σ·J₂=288 n=6 fit (Tesla data).
+2. `nuclear` 그룹 SMR Q ≥ σ-φ=10 closed-form 측정 (datacenter-reactor).
+3. `grid` 그룹 balance 6-cycle τ=4 phase rotation simulation (KEPCO data).
+4. fuel-cell + thermal + mining + meta wired.
+
+## §A.1 Invariant lattice (n=6)
+
+```
+σ(6) · φ(6) = n · τ(6) = J₂ = 24
+   12   ·   2  =  6  ·   4  = 24
+```
+
+| Symbol | Value | Role | Energy projection |
+|--------|-------|------|-------------------|
+| σ(6)   | 12    | sigma — cardinality bin | 12-month grid load profile cycle |
+| τ(6)   | 4     | tau — state quartet | 4 grid balance phases (peak / shoulder / off-peak / valley) |
+| φ(6)   | 2     | phi — verdict bit | dispatchable / intermittent |
+| J₂     | 24    | Mathieu / Leech | 24-hour load curve harmonic |
+
+## §A.2 Release cadence
+
+| Version | Date | Status | Highlights |
+|---------|------|--------|------------|
+| v1.0.0 | 2026-05-06 | RELEASED | 14 verb 시드 + 7 그룹 표 |
+| v1.1.0 | ~2026-08 (TARGET) | planned | `battery` 그룹 EV cycle-life n=6 fit .hexa |
+| v1.2.0 | ~2026-10 | planned | `nuclear` 그룹 SMR Q=σ-φ=10 fit .hexa (datacenter-reactor) |
+| v1.3.0 | ~2026-12 | planned | `grid` 그룹 balance 6-cycle simulation .hexa |
+| v2.0.0 | ~2027-Q3 | ASPIRATIONAL | fuel-cell + thermal + mining + meta wired |
+
+## §A.3 Cycle history
+
+- **Cycle 0 (2026-05-06)** — v1.0.0 initial extraction from n6-architecture@c0f1f570. Commit `60c2523`. 14 verb / 7 그룹 cp -R.
+
+## §A.4 Falsifier preregister
+
+- **F-ENRG-1** — EV battery cycle life σ·J₂=288 cycles n=6 fit, Tesla public data 일치?
+- **F-ENRG-2** — SMR Q ≥ σ-φ=10 closed-form 측정 (NuScale / KAERI data)?
+- **F-ENRG-3** — power-grid balance 6-cycle τ=4 phase rotation, 한국 KEPCO data fit?
+- **F-ENRG-4** — PEMFC efficiency τ=4 phase η_max = σ/J₂ = 50% (Brayton parity) 측정?
+
+## §A.5 Pending decisions
+
+- battery → nuclear → grid 우선순위 (consumer impact vs B2B impact).
+- KEPCO data 합법적 access 경로.
+- amd-ree-mineshaft-phes 와의 critical-mineral 연결 강도 (n6-arch 의 critical-mineral-conflict-arbitration kick-spec과 cross-link).
