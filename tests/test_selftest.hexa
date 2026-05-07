@@ -6,6 +6,9 @@
 //
 // Cost: $0 (orchestrates the placeholder dispatcher; no numerical work).
 
+// Post-2026-05-07 restructure: verb dirs live at module/<verb>/ (T2 in the
+// canonical hexa-sscb pattern). VERB_PARENT prefixes the lookup path.
+let VERB_PARENT = "module"
 let VERB_DIRS: [str] = [
     "battery_arch", "battery_energy",
     "nuclear", "smr_dc", "dc_reactor",
@@ -28,7 +31,7 @@ fn main() {
     // ── direct verb-dir count check (offline guard) ──
     let mut missing: [str] = []
     for v in VERB_DIRS {
-        if _dir_exists(root + "/" + v) == false { missing = missing + [v] }
+        if _dir_exists(root + "/" + VERB_PARENT + "/" + v) == false { missing = missing + [v] }
     }
     let n_present = 14 - missing.len()
     println("test_selftest: verb-dirs present = " + str(n_present) + " / 14")

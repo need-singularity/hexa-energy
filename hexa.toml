@@ -9,7 +9,7 @@
 name = "hexa-energy"
 version = "1.0.0"
 entry = "cli/hexa-energy.hexa"
-description = "Energy 통합 substrate (HEXA family) — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb (fusion·rtsc 외). Spec-first; 작동 .hexa CLI TBD. Fusion 및 RT-SC는 별도 standalone (hexa-fusion, hexa-rtsc)."
+description = "Energy 통합 substrate (HEXA family) — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb (fusion·antimatter·rtsc 외). Spec-first; 작동 .hexa CLI TBD. Fusion·antimatter·RT-SC는 별도 standalone — hexa-energy 작업 중 필요하면 해당 sibling CLI(hexa-fusion / hexa-antimatter / hexa-rtsc)를 직접 호출."
 license = "MIT"
 authors = ["박민우 <nerve011235@gmail.com>"]
 repository = "https://github.com/need-singularity/hexa-energy"
@@ -36,6 +36,10 @@ files = [
 install = "install.hexa"
 
 # ── Verb groups (14 verbs / 7 groups) ─────────────────────
+# Each verb resides at module/<verb>/ (T2 in the canonical hexa-sscb pattern,
+# raw 270/271/272/273 + arch.001 collapsed). The values below are verb
+# directory names; resolve via module/<verb>/<verb>.md for the spec markdown.
+#
 # battery   : battery_arch, battery_energy
 # nuclear   : nuclear, smr_dc, dc_reactor
 # grid      : grid, pv_microgrid, solar
@@ -43,6 +47,7 @@ install = "install.hexa"
 # thermal   : hvac, thermal
 # mining    : mineshaft
 # meta      : arch, efficiency
+verb_parent = "module"
 [verbs]
 battery   = ["battery_arch", "battery_energy"]
 nuclear   = ["nuclear", "smr_dc", "dc_reactor"]
@@ -63,16 +68,20 @@ verbs_spec = 14
 verdict = "SPEC_FIRST"
 extracted_from = "n6-architecture/domains/energy/ @ c0f1f570"
 
-# ── Cross-link (sister substrates) ────────────────────────
+# ── Cross-link (sister substrates — invoke their CLIs directly) ──
+# Policy: when working inside hexa-energy and you need fusion or antimatter,
+#         call the sibling CLI directly (hexa-fusion …, hexa-antimatter …).
+#         Do NOT re-implement, re-vendor, or proxy these axes through hexa-energy.
 [crosslink]
-fusion = "need-singularity/hexa-fusion (fusion energy 별도 standalone)"
-rtsc   = "need-singularity/hexa-rtsc (RT-SC 별도 standalone)"
-earth  = "need-singularity/hexa-earth (climate cousin: carbon-capture · environmental-protection)"
+fusion     = "need-singularity/hexa-fusion (fusion 별도 standalone — call `hexa-fusion` CLI directly)"
+antimatter = "need-singularity/hexa-antimatter (antimatter 별도 standalone — call `hexa-antimatter` CLI directly)"
+rtsc       = "need-singularity/hexa-rtsc (RT-SC 별도 standalone — call `hexa-rtsc` CLI directly)"
+earth      = "need-singularity/hexa-earth (climate cousin — carbon-capture · environmental-protection)"
 
 # ── Scope honesty (raw#10 C3) ─────────────────────────────
 [scope]
 honest_scope = "14-verb 통합 substrate (7 그룹). spec-first markdown only at v1.0.0 — 작동 .hexa CLI TBD."
-not_scope = ["fusion (→ hexa-fusion)", "RT-SC / room-temp superconductor (→ hexa-rtsc)", "carbon-capture & environmental (→ hexa-earth)", "in-situ deployment validation"]
+not_scope = ["fusion (→ hexa-fusion CLI)", "antimatter (→ hexa-antimatter CLI)", "RT-SC / room-temp superconductor (→ hexa-rtsc CLI)", "carbon-capture & environmental (→ hexa-earth CLI)", "in-situ deployment validation"]
 
 # ── Cost profile ──────────────────────────────────────────
 [cost]

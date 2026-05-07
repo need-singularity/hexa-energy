@@ -1,0 +1,154 @@
+# ---
+# schema_version: project/own/v1
+# last_updated: 2026-05-07
+# mk: 2
+# ---
+#
+# # hexa-energy/.own (mk2)
+#
+# Schema authority: hive/spec/schema/own_v1.schema.yaml
+# Format: mk2 frontmatter (#-prefixed YAML) + comment-section markdown headers
+# + mk1 raw-format body (`own N <status> "name"` blocks). raw_loader.hexa
+# silently skips all `#`-prefixed lines so the body parses unchanged.
+# Authoritative rule content remains in `own N <status> ...` blocks below.
+#
+# This repo is the public distribution form of the HEXA-energy substrate,
+# extracted from n6-architecture/domains/energy/ on 2026-05-06 (n6-arch SHA
+# c0f1f570). Sister-extraction of hexa-bio v1.0.0 and hexa-sscb mk1. Source
+# of truth for the spec stays upstream (n6-architecture/domains/energy/);
+# this repo extracts a frozen snapshot plus runnable artifacts (verify/,
+# tests/, cli/, build/).
+#
+# Replaces any ai-native/CLAUDE.md (per user directive 2026-05-06: "claude.md
+# 금지 -> .own 활용"). Structural pattern follows hexa-sscb (raw 270/271/272/
+# 273 + arch.001 collapsed) — `core/<feature>/` + `module/<sub>/` + README.ai.md
+# triplet.
+#
+# ## roles
+# - dancinlife (project owner)
+# - claude opus / sonnet / haiku (AI agents — autonomous within own baselines)
+#
+# ## baselines
+# - n6-architecture canonical SSOT — extraction consumer (sync mapping in doc/lineage/origin.md)
+# - core/energy/ directory name preserved post-extraction — must stay 1:1 with upstream domains/energy/
+# - 14-verb / 7-group integration substrate — the count is contractual; verb adds/removes need full lattice restatement
+# - doc-first repo with thin runnable surface (verify/ + tests/ + cli/ + build/ only)
+# - fusion · antimatter · RT-SC are out of scope here — call sibling CLIs directly (hexa-fusion / hexa-antimatter / hexa-rtsc)
+#
+# ## project_directives
+# - n=14 verb-count master identity invariant: verb_count ≡ 14, group_count ≡ 7, battery≡2, nuclear≡3, grid≡3, fuel-cell≡1, thermal≡2, mining≡1, meta≡2 — never changed without restating the lattice equality (own 1)
+# - 7-group integration contractual: battery / nuclear / grid / fuel-cell / thermal / mining / meta — never silently fold or split a group (own 2)
+# - code permitted ONLY in verify/, tests/, cli/, build/ — new code locations require README + .own update before the implementing PR (own 3)
+# - core/energy/domain.md = SSOT for verb roster + integration topology; module/* derives, if numbers disagree domain.md wins (own 4)
+# - additive-only at doc layer — additions OK, renames/moves require doc/lineage/origin.md update + redirect note
+# - upstream sync mapping: module/<verb>/<verb>.md ↔ n6-architecture/domains/energy/<upstream-name>/  (mapping in doc/lineage/origin.md)
+# - SPEC_FIRST verdict at v1.0.0 — 0/14 verbs ship a working .hexa kernel; selftest PASS = 14 verb-dirs present, NOT empirical claim validation (own 5)
+#
+# ## cross_link_to_specs
+# - hive/spec/schema/own_v1.schema.yaml — THIS schema authority
+# - hive/spec/mk2_apex.spec.yaml — orchestrator
+# - hive/spec/ai_native_module_architecture.spec.yaml — core+module+ai-native triplet pattern (raw 270/271/272/273 + arch.001)
+#
+# ## cross_link_to_raws
+# - raw 0 (root-ssot) — .raw + .own + .guide triad
+# - raw 20 (own-monotonic) — own slug matching raw slug MUST strengthen
+# - raw 91 (honest-c3-disclosure) — process-quality + honest C1-C5
+# - raw 270/271/272/273 (core+module 4-rule cluster) — core/<feature>/ + module/<sub>/ + README.ai.md triplet pattern
+# - mk2.arch.001 — hive raw.mk2 arch.001 collapsed pattern (this repo's structural baseline)
+#
+# ## cross_link_to_sisters
+# - need-singularity/hexa-sscb — pattern reference (single-feature core, 4-foundry stack)
+# - need-singularity/hexa-bio — sister extraction (life substrate)
+# - need-singularity/hexa-fusion — fusion frontier (out of scope here; call CLI directly)
+# - need-singularity/hexa-antimatter — antimatter (out of scope here; call CLI directly)
+# - need-singularity/hexa-rtsc — RT-SC (out of scope here; call CLI directly)
+# - need-singularity/hexa-earth — climate cousin (carbon-capture · environmental-protection)
+#
+# ## recent_strengthenings
+# - 2026-05-07: structural restructure to hexa-sscb pattern. Created core/energy/{spec,domain,doc/}, module/<verb>/ × 14 (moved from root), verify/, build/, doc/{archive,lineage}/, .own (this file), README.ai.md. cli/, tests/, hexa.toml, install.hexa preserved at root. Repo-root README emoji changed from ⚡ to 🔋 (avoid hexa-brain 🧠⚡ collision). own 1-5 land.
+# - 2026-05-07: fusion · antimatter · RT-SC reframed as out-of-scope axes — sibling CLIs (hexa-fusion / hexa-antimatter / hexa-rtsc) called directly; no proxy through hexa-energy. cli/hexa-energy.hexa returns friendly redirect on `fusion`/`antimatter`/`rtsc` subcommands.
+# - 2026-05-06: initial v1.0.0 extraction from n6-architecture@c0f1f570. 14-verb / 7-group integration substrate, SPEC_FIRST verdict (0/14 wired).
+
+# hexa-energy/.own — project-local SSOT layer
+# 포맷: raw-format (.raw 와 동일 파서). 자세한 스펙: hive/self/raw_loader.hexa
+# 검증: tool/own_lint.hexa — 추가 규칙이 .raw 와 같은 slug 를 가지면 monotonic
+#       strengthening (status 강화 + scope 전 계승 + enforce/proof 가산) 이어야 한다.
+
+own 1 new "hexa-energy-n14-master-identity — n=14 verb-count 격자가 모든 surface 에서 일치"
+  slug hexa-energy-n14-master-identity
+  scope hexa-energy 전체 — core/energy/spec.md, core/energy/domain.md, module/<verb>/, README.md, README.ai.md, hexa.toml, cli/hexa-energy.hexa, verify/, tests/.
+  enforce raw:os-lock
+  enforce-layer hard
+  enforce-layer-rationale 격자 식별자는 verify/cross_doc_audit.py 가 자동 검증 (verb_count == 14 모든 등장 위치, group_count == 7, 그룹별 verb 수 일치). 위반 시 비-0 exit + 어긋난 위치 출력. 본 own 은 그 verifier 의 SSOT.
+  decl verb_count ≡ 14 (battery_arch, battery_energy, nuclear, smr_dc, dc_reactor, grid, pv_microgrid, solar, pemfc, hvac, thermal, mineshaft, arch, efficiency)
+  decl group_count ≡ 7 (battery / nuclear / grid / fuel-cell / thermal / mining / meta)
+  decl battery_verbs ≡ 2 (battery_arch, battery_energy)
+  decl nuclear_verbs ≡ 3 (nuclear, smr_dc, dc_reactor)
+  decl grid_verbs ≡ 3 (grid, pv_microgrid, solar)
+  decl fuel_cell_verbs ≡ 1 (pemfc)
+  decl thermal_verbs ≡ 2 (hvac, thermal)
+  decl mining_verbs ≡ 1 (mineshaft)
+  decl meta_verbs ≡ 2 (arch, efficiency)
+  why 14-verb / 7-group 분포는 디자인 모티프가 아니라 falsification budget. 격자 식별자가 어긋나면 hexa.toml [verbs] · README group 표 · cli VERB_DIRS · selftest count 의 모든 숫자 신뢰성이 무너짐. SPEC_FIRST 상태에서 verb 추가/삭제는 항상 lattice equality 를 동시 갱신해야 한다.
+  note 격자 식별자 SSOT = core/energy/domain.md verb 목록. spec.md 와 module/* 와 hexa.toml 가 어긋나면 domain.md 가 이긴다. 변경 시 domain.md 부터 갱신 → spec.md → hexa.toml [verbs] → cli VERB_DIRS → 마지막에 verify/cross_doc_audit.py 의 expected 값.
+  promoted-at 2026-05-07
+
+own 2 new "hexa-energy-7-group-integration-contractual — 7 그룹 분류 계약적, silent fold/split 금지"
+  slug hexa-energy-7-group-integration-contractual
+  scope core/energy/{spec,domain}.md group 표 / hexa.toml [verbs] / cli/hexa-energy.hexa _verbs_in_group / module/<verb>/ 그룹 라벨.
+  enforce raw:os-lock
+  enforce-layer hard
+  enforce-layer-rationale 7-group 분류는 README · spec · domain · hexa.toml · cli 5 surface 에 동시 등장. cross_doc_audit.py 가 5 surface 모두에서 7 group 이름 (battery / nuclear / grid / fuel-cell / thermal / mining / meta) 등장을 자동 확인. 그룹을 silent fold (예: battery + nuclear → "storage") 하면 하위 verb 분배 신뢰성이 무너지고 sister substrate (hexa-bio, hexa-sscb) 와의 group-axis 비교가 깨짐.
+  decl group 1: battery (battery_arch + battery_energy = 2 verbs)
+  decl group 2: nuclear (nuclear + smr_dc + dc_reactor = 3 verbs)
+  decl group 3: grid (grid + pv_microgrid + solar = 3 verbs)
+  decl group 4: fuel-cell (pemfc = 1 verb)
+  decl group 5: thermal (hvac + thermal = 2 verbs)
+  decl group 6: mining (mineshaft = 1 verb)
+  decl group 7: meta (arch + efficiency = 2 verbs)
+  decl 그룹 추가/삭제/이름변경 절차: core/energy/domain.md "Group ledger" 표 + spec.md "Verbs (14 / 7 groups)" 표 + hexa.toml [verbs] section + cli/hexa-energy.hexa _verbs_in_group + verify/cross_doc_audit.py expected_groups + 본 own 의 decl 7 줄을 동일 PR 에서 동시 갱신.
+  why 7 그룹은 n=14 verb 를 falsification 가능하게 partition 한다. 그룹별 verb 수 (2/3/3/1/2/1/2) 는 lattice (own 1 decl 와 일치) 이고, 합 = 14. fold 하면 2/3/3/1/2/1/2 → 다른 sequence 가 되고 own 1 의 verb_count 14 invariant 와 충돌.
+  note fusion · antimatter · RT-SC 는 8/9/10 번째 그룹이 아니라 별도 standalone substrate (out of scope). 본 own 은 hexa-energy 내부 7 group 만 다룬다.
+  promoted-at 2026-05-07
+
+own 3 new "hexa-energy-doc-first-code-scope — 코드는 verify/ tests/ cli/ build/ 4 위치에서만 허용"
+  slug hexa-energy-doc-first-code-scope
+  scope hexa-energy repo 전체. 모든 *.py / *.hexa / *.c / *.h / Makefile / pyproject.toml 등 코드성 파일.
+  enforce raw:os-lock
+  enforce-layer hard
+  enforce-layer-rationale 4 위치 외에 코드 추가 시 verify/cross_doc_audit.py 의 'rogue code' 체크가 차단. doc-first 정체성은 hive raw.mk2 arch.001 의 core/<feature>/ + module/<sub>/ + README.ai.md 패턴 핵심 — 임의 위치 코드 추가는 패턴 깨짐. hexa-sscb own 3 동일 정책.
+  decl 허용 위치 1: verify/ — runnable invariant audit (Python stdlib only)
+  decl 허용 위치 2: tests/ — pytest acceptance scaffold (or .hexa test files)
+  decl 허용 위치 3: cli/ — hexa-energy CLI dispatcher (.hexa)
+  decl 허용 위치 4: build/ — pandoc PDF rebuild (Makefile + LaTeX template, when added)
+  decl 새 코드 위치 추가 절차: README.md "Repository layout" + README.ai.md "Hierarchy" 다이어그램 + 본 own decl 갱신을 코드 PR 보다 먼저 land.
+  why doc-first 는 마케팅이 아니라 작자 정책. 4 도메인 (verify/tests/cli/build) 는 "spec 자동 검증" + "ACCEPTANCE checklist 자동화" + "verb 라우팅 dispatcher" + "PDF rebuild" 4 가지 명확한 목적. 다른 위치에 코드가 들어오면 spec drift 위험.
+  decl 면제: doc/ 내부의 lineage / archive 경로는 코드 아님 (.md 만). LICENSE / README*.md / CHANGELOG / .gitignore / .own / hexa.toml / install.hexa / 본 own 에 명시된 4 위치는 면제 자동.
+  decl 면제: module/<verb>/<verb>.md (spec markdown) 와 module/<verb>/README*.md 는 doc 이므로 면제. module/<verb>/verify_<verb>.hexa 같은 verb-local verifier 는 verify/ 의 sub-helper 로 본다 (예: 현재 module/battery_energy/verify_battery-energy.hexa).
+  note doc/archive/* 는 immutable — 본 own 의 4 허용 위치와 무관하게 "절대 수정 금지" 가 우선 (raw 91 honest C3, doc/archive 는 forensic continuity 스냅샷). 4 코드 위치 안에서도 archive 참조는 read-only.
+  promoted-at 2026-05-07
+
+own 4 new "hexa-energy-domain-md-numerical-ssot — 모든 숫자는 core/energy/domain.md 가 SSOT"
+  slug hexa-energy-domain-md-numerical-ssot
+  scope core/energy/domain.md 의 verb 표 / group 표 / 14·7 invariant / module/<verb>/<verb>.md 안의 모든 정량 claim.
+  enforce raw:os-lock
+  enforce-layer soft
+  enforce-layer-rationale soft 인 이유: module/<verb>/<verb>.md 는 n6-architecture upstream verbatim copy 이므로 domain.md 와 즉시 일치 보장은 어려움. 대신 verify/cross_doc_audit.py 가 분기 발생 시 경고 emit, 분기를 발견하면 domain.md 우선으로 reconcile 한다는 정책.
+  decl SSOT 우선순위: domain.md > spec.md > module/<verb>/<verb>.md > README.md > hexa.toml > cli VERB_DIRS
+  decl 분기 처리: domain.md 와 module/<verb>/<verb>.md 가 어긋나면 domain.md 가 이긴다. domain.md 를 갱신하거나, module/<verb>/<verb>.md 를 domain.md 에 맞게 동기화한다.
+  why hexa-sscb own 1 의 domain.md SSOT 정책과 동형. 다중 verb 인 hexa-energy 에서는 분기 발생 빈도가 더 높으므로 명시적 우선순위가 더 중요.
+  note SPEC_FIRST 상태 (0/14 wired) 에서는 module/<verb>/<verb>.md 의 claim 이 empirical validation 받지 않은 markdown 일 뿐. domain.md 도 마찬가지. selftest PASS 는 verb-dir 14 sentinel 만 보장.
+  promoted-at 2026-05-07
+
+own 5 new "hexa-energy-spec-first-verdict-honest — v1.0.0 SPEC_FIRST 정직 표기 의무"
+  slug hexa-energy-spec-first-verdict-honest
+  scope README.md status badge / hexa.toml [closure] / cli cmd_status / cli cmd_selftest / 모든 module/<verb>/README*.md status 표기.
+  enforce raw:91-honest-c3
+  enforce-layer hard
+  enforce-layer-rationale honest C3 (raw 91) 의무. v1.0.0 는 markdown spec 만 (0/14 wired) 이고 selftest PASS 는 verb-dir sentinel sweep 일 뿐. 이를 실제 작동 substrate 처럼 표기하면 raw 91 위반.
+  decl status 의무 표기: "SPEC_FIRST" verdict + "0/N wired" + "N/14 spec" 형태로 README · hexa.toml · cli output 모두에서.
+  decl selftest 의미: 14 verb-dir 존재 sentinel sweep. 어떤 empirical claim 도 validation 안 함.
+  decl wired 정의: module/<verb>/ 가 작동 .hexa 또는 .py kernel 을 갖고, 해당 kernel 이 module/<verb>/<verb>.md 의 정량 claim 중 ≥ 1 개를 자동 재산출/검증할 때.
+  why HEXA family 는 honest C3 (raw 91) 가 brand 정체성. SPEC_FIRST 를 작동 substrate 로 표기하면 sister substrate (hexa-sscb 의 "10/10 PASS verify") 와의 격차 가시성이 사라지고 user trust 가 무너진다.
+  note module/battery_energy/verify_battery-energy.hexa 는 wired kernel 의 첫 후보. 향후 verify/ 에서 호출되어 PASS 결과를 cmd_status 의 wired 카운트에 반영하면 wired = 1 로 올라감 (그 시점에 본 own 의 v1.0.0 상태 표기를 v1.x.0 으로 promote).
+  promoted-at 2026-05-07

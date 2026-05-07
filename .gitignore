@@ -1,5 +1,28 @@
+# Local runtime / state artefacts
 state/
 *.log
+
+# Editor / OS
 .DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Python (verify/ + tests/)
 __pycache__/
 *.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Local agent state
+.claude/
+.hexa-state/
+
+# Build artefacts (when build/ adds pandoc PDFs)
+*.pdf
+*.aux
+*.log
+*.out
+*.toc

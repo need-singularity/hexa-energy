@@ -1,53 +1,158 @@
-# ⚡ hexa-energy
+# 🔋 hexa-energy — Energy substrate (HEXA family)
 
-> **Cross-link**: fusion → [`need-singularity/hexa-fusion`](https://github.com/need-singularity/hexa-fusion) · RT-SC → [`need-singularity/hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc) · climate cousin → [`need-singularity/hexa-earth`](https://github.com/need-singularity/hexa-earth)
+> **14-verb / 7-group integration substrate** governed by the **n=14 verb
+> lattice**. Battery + nuclear + grid + fuel-cell + thermal + mining + meta.
+> Spec-first MIT extraction from `n6-architecture/domains/energy/` @ `c0f1f570`.
+>
+> **Out-of-scope axes — call sibling CLIs directly when needed**:
+> fusion → [`hexa-fusion`](https://github.com/need-singularity/hexa-fusion) ·
+> antimatter → [`hexa-antimatter`](https://github.com/need-singularity/hexa-antimatter) ·
+> RT-SC → [`hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc) ·
+> climate cousin → [`hexa-earth`](https://github.com/need-singularity/hexa-earth)
 
-Energy 통합 — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb (fusion·rtsc 외).
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-informational.svg)](CHANGELOG.md)
+[![Verbs: 14 / 7 groups](https://img.shields.io/badge/verbs-14_%2F_7_groups-blue.svg)](#verbs-14--7-groups)
+[![Wired: 0/14](https://img.shields.io/badge/wired-0%2F14_(SPEC__FIRST)-orange.svg)](#status)
+[![Provenance](https://img.shields.io/badge/from-n6--arch%40c0f1f570-purple.svg)](doc/lineage/origin.md)
+[![Pattern](https://img.shields.io/badge/pattern-hexa--sscb_(raw_270%2F271%2F272%2F273)-blueviolet.svg)](README.ai.md)
 
-`hexa-energy` is the standalone Energy substrate of the HEXA family. It groups **14 verbs across 7 groups**, extracted from `n6-architecture/domains/energy/` at SHA `c0f1f570` (2026-05-06).
-
----
-
-### Why
-
-Energy is the load-bearing layer beneath every other substrate (compute, mobility, manufacturing, life-support). The n6-architecture monorepo had energy specs scattered across 14+ subdomains; `hexa-energy` consolidates them into a single, MIT-licensed, public, spec-first substrate that downstream consumers can install via `hx install hexa-energy`.
-
-Two energy axes are intentionally **out of scope** here:
-
-- **Fusion** — moving frontier; merits its own substrate → `hexa-fusion`.
-- **Room-temperature superconductor (RT-SC)** — speculative material-science axis with its own falsifier preregister → `hexa-rtsc`.
-
-Climate / carbon-capture / environmental-protection sits in the cousin substrate `hexa-earth` (atmosphere & CDR is a sink, not a source).
-
----
-
-### Verbs (14 / 7 groups)
-
-| Group       | Verbs                                          | Source (`n6-architecture/domains/energy/`)                                                                                  |
-|-------------|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| battery     | `battery_arch`, `battery_energy`               | `battery-architecture/`, `battery-energy/`                                                                                   |
-| nuclear     | `nuclear`, `smr_dc`, `dc_reactor`              | `nuclear-reactor/`, `smr-datacenter/`, `datacenter-reactor/`                                                                 |
-| grid        | `grid`, `pv_microgrid`, `solar`                | `power-grid/`, `rooftop-pv-2nd-life-microgrid/`, `solar-architecture/`                                                       |
-| fuel-cell   | `pemfc`                                        | `pemfc/`                                                                                                                     |
-| thermal     | `hvac`, `thermal`                              | `hvac-system/`, `thermal-management/`                                                                                        |
-| mining      | `mineshaft`                                    | `amd-ree-mineshaft-phes/`                                                                                                    |
-| meta        | `arch`, `efficiency`                           | `energy-architecture/`, `energy-efficiency/`                                                                                 |
-
-Total: **14 verbs / 7 groups**. Every verb directory holds the originating spec markdown plus any sub-scale assets that lived under it.
+> **Status (2026-05-07):** v1.0.0 initial extraction restructured to the
+> canonical `core/<feature>/ + module/<sub>/ + README.ai.md` triplet (raw
+> 270/271/272/273 + arch.001 collapsed). 14 verb specs landed under
+> `module/<verb>/`; 0/14 working kernels (verdict: `SPEC_FIRST`).
 
 ---
 
-### Status
+## What is hexa-energy?
 
-**14-verb 통합 substrate (7 그룹). spec-first (작동 .hexa CLI TBD). Fusion 및 RT-SC는 별도 standalone: `hexa-fusion`, `hexa-rtsc` 참조.**
+`hexa-energy` is the **energy substrate** of the HEXA family. It groups
+**14 verbs across 7 groups**, extracted verbatim from
+`n6-architecture/domains/energy/` at SHA `c0f1f570` on 2026-05-06, and
+repackaged as a public MIT substrate that downstream consumers can install
+via `hx install hexa-energy`.
 
-- v1.0.0 closure: **`SPEC_FIRST`** — 0/14 verbs ship a working `.hexa` kernel; 14/14 ship as markdown specs extracted verbatim from `n6-architecture@c0f1f570`.
-- The `cli/hexa-energy.hexa` CLI is a **placeholder dispatcher** (group-level routing + selftest + status). Numerical kernels are deferred.
-- `selftest` PASS = 14 verb directories present. It does **not** imply any empirical claim has been validated.
+The n=14 verb lattice is not decorative — it is the **falsification budget**:
+
+- `verb_count ≡ 14` (own 1)
+- `group_count ≡ 7` (own 2)
+- per-group: `2 / 3 / 3 / 1 / 2 / 1 / 2` (battery / nuclear / grid /
+  fuel-cell / thermal / mining / meta)
+
+Every verb roster change must restate the lattice equality across **5
+authoritative surfaces**: `core/energy/domain.md` → `core/energy/spec.md` →
+`hexa.toml [verbs]` → `cli/hexa-energy.hexa VERB_DIRS` →
+`verify/cross_doc_audit.py expected`. `verify/energy_verify.py` exits
+non-zero if any surface diverges.
 
 ---
 
-### Install
+## Repository layout
+
+```
+hexa-energy/
+├── README.md                          ← this file (public landing)
+├── README.ai.md                       ← AI-native handoff (raw 271)
+├── LICENSE                            ← MIT
+├── .own                               ← project-local SSOT (mk2 own_v1)
+├── CHANGELOG.md / RELEASE_NOTES_v1.0.0.md
+├── hexa.toml                          ← hx package manifest
+├── install.hexa                       ← hx install hook
+├── core/
+│   └── energy/                        T1 (single-feature core SSOT)
+│       ├── spec.md                    ← short paper (n=14 lattice + 7-group table)
+│       ├── domain.md                  ← full domain (numerical SSOT, own 4)
+│       └── doc/                       ← group · verb cross-references
+│           └── groups.md
+├── module/                            T2 (per-verb fan-out — 14 modules)
+│   ├── battery_arch/                  ← README.md + battery-architecture.md + 8 scale subdirs
+│   ├── battery_energy/                ← README.md + battery-energy.md + verify_battery-energy.hexa
+│   ├── nuclear/  smr_dc/  dc_reactor/
+│   ├── grid/  pv_microgrid/  solar/
+│   ├── pemfc/
+│   ├── hvac/  thermal/
+│   ├── mineshaft/
+│   └── arch/  efficiency/
+├── verify/                            ← runnable invariant audit (Python stdlib)
+│   ├── energy_verify.py               ← n=14 verb / 7-group lattice audit
+│   └── cross_doc_audit.py             ← cross-document consistency audit
+├── tests/                             ← pytest acceptance scaffold
+├── cli/                               ← .hexa dispatcher (hexa-energy router)
+│   └── hexa-energy.hexa
+├── build/                             ← pandoc PDF rebuild (TBD)
+└── doc/
+    ├── archive/                       ← immutable predecessor snapshots (TBD)
+    └── lineage/
+        └── origin.md                  ← upstream provenance + restructure record
+```
+
+The `core/<feature>/ + module/<sub>/ + README.ai.md` triplet follows
+**hive raw.mk2 arch.001** (collapsed from raw 270 / 271 / 272 / 273) — the
+canonical core-hierarchy pattern shared with sister repositories `hexa-bio`,
+`hexa-sscb`, etc.
+
+Imports flow **T0 → T1 → T2** only. T2 modules MUST NOT import sibling T2
+modules; cross-verb references go through T1 (`core/energy/domain.md`).
+
+---
+
+## Verbs (14 / 7 groups)
+
+| Group       | Verbs                                          | Source (`n6-architecture/domains/energy/`)                                                                  |
+|-------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| battery     | `battery_arch`, `battery_energy`               | `battery-architecture/`, `battery-energy/`                                                                   |
+| nuclear     | `nuclear`, `smr_dc`, `dc_reactor`              | `nuclear-reactor/`, `smr-datacenter/`, `datacenter-reactor/`                                                 |
+| grid        | `grid`, `pv_microgrid`, `solar`                | `power-grid/`, `rooftop-pv-2nd-life-microgrid/`, `solar-architecture/`                                       |
+| fuel-cell   | `pemfc`                                        | `pemfc/`                                                                                                     |
+| thermal     | `hvac`, `thermal`                              | `hvac-system/`, `thermal-management/`                                                                        |
+| mining      | `mineshaft`                                    | `amd-ree-mineshaft-phes/`                                                                                    |
+| meta        | `arch`, `efficiency`                           | `energy-architecture/`, `energy-efficiency/`                                                                 |
+
+Total: **14 verbs / 7 groups**. Each verb's spec markdown lives at
+`module/<verb>/<verb>.md` (verbatim from upstream); the per-module
+`README.md` + `README.ai.md` add the integration metadata.
+
+For the canonical group ledger and integration topology see
+[`core/energy/domain.md`](core/energy/domain.md) §4.
+
+---
+
+## Module inventory
+
+| Path | What it is |
+|---|---|
+| [`core/energy/spec.md`](core/energy/spec.md) | Short paper — n=14 lattice + 7-group table + Mk-ladder + verify/cost summary |
+| [`core/energy/domain.md`](core/energy/domain.md) | Full domain — verb ledger / group ledger / integration topology / out-of-scope policy. **Numerical SSOT (own 4).** |
+| [`core/energy/doc/groups.md`](core/energy/doc/groups.md) | Group · verb cross-reference + downstream composition examples |
+| [`module/<verb>/`](module/) × 14 | Per-verb spec markdown (verbatim from upstream) + `README.md` + `README.ai.md` |
+| [`verify/energy_verify.py`](verify/energy_verify.py) | n=14 verb / 7-group lattice audit (verb sentinel + group sentinel + 4-surface verb_count == 14) |
+| [`verify/cross_doc_audit.py`](verify/cross_doc_audit.py) | Cross-document consistency (per-group counts + verdict honesty + out-of-scope phrasing + no-rogue-code) |
+| [`cli/hexa-energy.hexa`](cli/hexa-energy.hexa) | Placeholder dispatcher — group routing + selftest + status; out-of-scope subcommands redirect to sibling CLIs |
+| [`tests/`](tests/) | pytest / .hexa acceptance scaffold |
+| [`build/`](build/) | Pandoc PDF rebuild (TBD) |
+| [`doc/lineage/origin.md`](doc/lineage/origin.md) | File-by-file upstream provenance + restructure record |
+| [`.own`](.own) | Project-local SSOT — n=14 lattice (own 1) + 7-group integration (own 2) + doc-first code-scope (own 3) + domain.md numerical SSOT (own 4) + SPEC_FIRST verdict honesty (own 5) |
+
+---
+
+## Status
+
+**v1.0.0 verdict: `SPEC_FIRST`** (own 5).
+
+- 14/14 verbs ship as markdown specs (`module/<verb>/<verb>.md`)
+- **0/14** verbs ship a working `.hexa` / `.py` kernel
+- `cli/hexa-energy.hexa` is a placeholder dispatcher (group routing + selftest +
+  status); kernels are deferred
+- `selftest` PASS = 14 `module/<verb>/` directories present (sentinel sweep
+  only — no empirical claim is validated by the sweep)
+
+Out-of-scope axes (fusion · antimatter · RT-SC · climate cousin) are NOT
+subcommands of `hexa-energy`. When working in this repo and you need any of
+them, **call the sibling CLI directly** — do NOT proxy or re-vendor.
+
+---
+
+## Install
 
 ```bash
 # Recommended (post-hx install registration):
@@ -61,43 +166,70 @@ export PATH="$HEXA_ENERGY_ROOT/cli:$PATH"
 hexa-energy selftest
 ```
 
-#### Quickstart
+---
+
+## Build & verify
 
 ```bash
-hexa-energy selftest                # 14-verb directory sentinel sweep
-hexa-energy status                  # 7-group table + verdict + caveats
-hexa-energy battery                 # group routing → battery_arch, battery_energy
-hexa-energy nuclear                 # group routing → nuclear, smr_dc, dc_reactor
-hexa-energy grid                    # group routing → grid, pv_microgrid, solar
-hexa-energy fuel-cell               # group routing → pemfc
-hexa-energy thermal                 # group routing → hvac, thermal
-hexa-energy mining                  # group routing → mineshaft
-hexa-energy meta                    # group routing → arch, efficiency
+# Invariant audits (Python stdlib only — no third-party deps):
+python3 verify/energy_verify.py        # n=14 verb / 7-group lattice (3 checks; exit 0 = PASS)
+python3 verify/cross_doc_audit.py      # cross-doc consistency (4 checks; exit 0 = PASS)
+
+# Group-level CLI routing:
+hexa-energy status                     # 7-group table + verdict + caveats
+hexa-energy selftest                   # 14-verb directory sentinel sweep
+hexa-energy battery                    # group routing → battery_arch, battery_energy
+hexa-energy nuclear                    # → nuclear, smr_dc, dc_reactor
+hexa-energy grid                       # → grid, pv_microgrid, solar
+hexa-energy fuel-cell                  # → pemfc
+hexa-energy thermal                    # → hvac, thermal
+hexa-energy mining                     # → mineshaft
+hexa-energy meta                       # → arch, efficiency
 ```
 
+#### When you need fusion / antimatter / RT-SC
+
+Those axes are **not** subcommands of `hexa-energy`. Call the sibling CLIs directly:
+
+```bash
+hexa-fusion status                     # fusion frontier — separate substrate
+hexa-antimatter selftest               # antimatter — separate substrate
+hexa-rtsc status                       # RT-SC — separate substrate
+```
+
+The dispatcher (`cli/hexa-energy.hexa`) returns a friendly redirect on
+`hexa-energy fusion` / `antimatter` / `rtsc` invocations — pointing at the
+sibling CLI binary, not proxying.
+
 ---
 
-### Cross-link
+## Cross-link
 
-`hexa-energy` is the **source-side** energy substrate. Three sibling repos handle the axes intentionally excluded here:
+`hexa-energy` is the **source-side** energy substrate. The axes below live in
+their own standalone repos — **invoke their CLIs directly**:
 
-| Sibling                                  | Scope                                                              | Why separate                                       |
-|------------------------------------------|--------------------------------------------------------------------|----------------------------------------------------|
-| [`hexa-fusion`](https://github.com/need-singularity/hexa-fusion) | fusion-powerplant + tabletop-fusion                                | Distinct frontier physics; deserves its own falsifier preregister. |
-| [`hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc)     | room-temp-sc + superconductor                                      | Material-science axis with its own deadline + risk profile.        |
-| [`hexa-earth`](https://github.com/need-singularity/hexa-earth)   | carbon-capture · environmental-protection · climate adaptation     | Climate is a *sink* for energy, modelled separately.               |
+| Sibling                                                                  | Scope                                                              | How to use from a hexa-energy session     |
+|--------------------------------------------------------------------------|--------------------------------------------------------------------|-------------------------------------------|
+| [`hexa-fusion`](https://github.com/need-singularity/hexa-fusion)         | fusion-powerplant + tabletop-fusion + plasma-deep                  | `hexa-fusion …` (sibling CLI, direct)     |
+| [`hexa-antimatter`](https://github.com/need-singularity/hexa-antimatter) | antimatter-factory + tabletop + PET cyclotron                      | `hexa-antimatter …` (sibling CLI, direct) |
+| [`hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc)             | room-temp-sc + superconductor                                      | `hexa-rtsc …` (sibling CLI, direct)       |
+| [`hexa-earth`](https://github.com/need-singularity/hexa-earth)           | carbon-capture · environmental-protection · climate adaptation     | `hexa-earth …` (sibling CLI, direct)      |
 
-Sister substrate (life): [`hexa-bio`](https://github.com/need-singularity/hexa-bio).
+Sister substrates (structural pattern reference): [`hexa-sscb`](https://github.com/need-singularity/hexa-sscb)
+(compute, mk1) · [`hexa-bio`](https://github.com/need-singularity/hexa-bio) (life).
 
 ---
 
-### Provenance
+## Provenance
 
-- Extracted from `n6-architecture/domains/energy/` at SHA `c0f1f570` (2026-05-06).
-- Original specs remain canonical in n6-architecture; this repo is a verbatim cp -R of the 14 selected subdomains, repackaged as a public MIT substrate.
-- Sister extraction pattern: `hexa-bio` v1.0.0 (2026-05-04).
+- Extracted from `n6-architecture/domains/energy/` at SHA `c0f1f570` on 2026-05-06.
+- Restructured to the canonical `core/<feature>/ + module/<sub>/ + README.ai.md`
+  triplet on 2026-05-07.
+- Original specs remain canonical in n6-architecture; this repo is a verbatim
+  copy of the 14 selected subdomains, repackaged as a public MIT substrate.
+- Per-file provenance: [`doc/lineage/origin.md`](doc/lineage/origin.md).
 
-### License
+## License
 
 MIT — see [LICENSE](LICENSE).
 

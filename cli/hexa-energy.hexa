@@ -17,10 +17,11 @@
 //   help        — this help
 //   --version   — print version
 //
-// Cross-link sister substrates:
-//   need-singularity/hexa-fusion  — fusion energy (별도 standalone)
-//   need-singularity/hexa-rtsc    — RT-SC (별도 standalone)
-//   need-singularity/hexa-earth   — climate cousin (carbon-capture · env-protection)
+// Cross-link sister substrates (NOT in this repo — call their own CLIs directly):
+//   need-singularity/hexa-fusion      — fusion (use `hexa-fusion …` directly)
+//   need-singularity/hexa-antimatter  — antimatter (use `hexa-antimatter …` directly)
+//   need-singularity/hexa-rtsc        — RT-SC (별도 standalone)
+//   need-singularity/hexa-earth       — climate cousin (carbon-capture · env-protection)
 //
 // Root resolution: $HEXA_ENERGY_ROOT env, else inferred from $0 dirname.
 //
@@ -52,6 +53,9 @@ let HE = hexa_energy_root()
 let HEXA_BIN = exec("command -v hexa 2>/dev/null || echo hexa").trim()
 
 // 14 verb directories (each holds the spec markdown extracted from n6-arch).
+// Post-2026-05-07 restructure: verbs live under module/<verb>/ (T2 in the
+// canonical hexa-sscb pattern). _dir_exists() checks resolve via VERB_PARENT.
+let VERB_PARENT = "module"
 let VERB_DIRS: [str] = [
     "battery_arch", "battery_energy",
     "nuclear", "smr_dc", "dc_reactor",
@@ -105,7 +109,7 @@ fn _dir_exists(p: str) -> bool {
 fn _count_present_verbs() -> int {
     let mut n = 0
     for v in VERB_DIRS {
-        if _dir_exists(HE + "/" + v) { n = n + 1 }
+        if _dir_exists(HE + "/" + VERB_PARENT + "/" + v) { n = n + 1 }
     }
     return n
 }
@@ -118,12 +122,13 @@ fn _print_caveats() {
     println("  1. v1.0.0 is SPEC-FIRST: 0/14 verbs ship a working .hexa kernel.")
     println("     All 14 verb directories contain markdown specs extracted from")
     println("     n6-architecture/domains/energy/ @ c0f1f570 (no numerical impl).")
-    println("  2. Fusion is OUT OF SCOPE — see need-singularity/hexa-fusion.")
-    println("  3. RT-SC (room-temp superconductor) is OUT OF SCOPE — see")
-    println("     need-singularity/hexa-rtsc.")
-    println("  4. Climate / carbon-capture / environmental-protection lives in")
+    println("  2. Fusion is OUT OF SCOPE — call `hexa-fusion …` CLI directly.")
+    println("  3. Antimatter is OUT OF SCOPE — call `hexa-antimatter …` CLI directly.")
+    println("  4. RT-SC (room-temp superconductor) is OUT OF SCOPE — call")
+    println("     `hexa-rtsc …` CLI directly.")
+    println("  5. Climate / carbon-capture / environmental-protection lives in")
     println("     need-singularity/hexa-earth (cousin substrate).")
-    println("  5. selftest PASS = 14 verb directories present; does NOT imply any")
+    println("  6. selftest PASS = 14 verb directories present; does NOT imply any")
     println("     empirical claim has been validated.")
 }
 
@@ -151,9 +156,9 @@ fn cmd_group(group: str, a: [str]) {
     println("hexa-energy " + VERSION + " — group: " + group)
     println("  verbs (" + str(verbs.len()) + "):")
     for v in verbs {
-        let present = _dir_exists(HE + "/" + v)
+        let present = _dir_exists(HE + "/" + VERB_PARENT + "/" + v)
         let mark = if present { "OK " } else { "??" }
-        println("    [" + mark + "] " + v + "    (spec: " + v + "/)")
+        println("    [" + mark + "] " + v + "    (spec: " + VERB_PARENT + "/" + v + "/)")
     }
     println("")
     println("  status: SPEC_FIRST — markdown only at v1.0.0; .hexa kernels TBD")
@@ -173,7 +178,7 @@ fn cmd_status(a: [str]) {
         js = js + "\"verbs_total\":14,\"groups_total\":7,"
         js = js + "\"verbs_wired\":0,\"verbs_spec\":" + str(n_present) + ","
         js = js + "\"verdict\":\"SPEC_FIRST\","
-        js = js + "\"crosslink\":{\"fusion\":\"hexa-fusion\",\"rtsc\":\"hexa-rtsc\",\"earth\":\"hexa-earth\"}"
+        js = js + "\"crosslink\":{\"fusion\":\"hexa-fusion\",\"antimatter\":\"hexa-antimatter\",\"rtsc\":\"hexa-rtsc\",\"earth\":\"hexa-earth\"}"
         js = js + "}"
         println(js)
         return
@@ -194,10 +199,11 @@ fn cmd_status(a: [str]) {
     println("  verb-dirs present: " + str(n_present) + " / 14")
     println("  verdict: SPEC_FIRST (0/14 .hexa kernels wired; 14/14 markdown specs)")
     println("")
-    println("  cross-link sisters (out of scope here):")
-    println("    fusion → need-singularity/hexa-fusion")
-    println("    rtsc   → need-singularity/hexa-rtsc")
-    println("    earth  → need-singularity/hexa-earth (climate cousin)")
+    println("  cross-link sisters (out of scope — call their CLIs directly):")
+    println("    fusion     → `hexa-fusion …`     (need-singularity/hexa-fusion)")
+    println("    antimatter → `hexa-antimatter …` (need-singularity/hexa-antimatter)")
+    println("    rtsc       → `hexa-rtsc …`       (need-singularity/hexa-rtsc)")
+    println("    earth      → `hexa-earth …`      (need-singularity/hexa-earth, climate cousin)")
     _print_caveats()
 }
 
@@ -206,7 +212,7 @@ fn cmd_status(a: [str]) {
 fn cmd_selftest(a: [str]) {
     let mut missing: [str] = []
     for v in VERB_DIRS {
-        if _dir_exists(HE + "/" + v) == false { missing = missing + [v] }
+        if _dir_exists(HE + "/" + VERB_PARENT + "/" + v) == false { missing = missing + [v] }
     }
     let n_present = 14 - missing.len()
     println("hexa-energy selftest — 14-verb directory sentinel sweep")
@@ -238,7 +244,8 @@ fn cmd_version() {
     println("standalone Energy substrate (HEXA family — extracted from n6-architecture@c0f1f570 on 2026-05-06)")
     println("license: MIT")
     println("repo:    https://github.com/need-singularity/hexa-energy")
-    println("sisters: hexa-fusion (fusion) · hexa-rtsc (RT-SC) · hexa-earth (climate)")
+    println("sisters: hexa-fusion · hexa-antimatter · hexa-rtsc · hexa-earth")
+    println("note:    fusion·antimatter·rtsc are out of scope here — call their CLIs directly.")
 }
 
 // ─── help ───
@@ -269,10 +276,11 @@ fn cmd_help() {
     println("env:")
     println("  HEXA_ENERGY_ROOT   override repo root (default: inferred from $0)")
     println("")
-    println("cross-link sisters (NOT in this repo — see standalone substrates):")
-    println("  fusion → need-singularity/hexa-fusion")
-    println("  rtsc   → need-singularity/hexa-rtsc")
-    println("  earth  → need-singularity/hexa-earth")
+    println("cross-link sisters (NOT in this repo — call their CLIs directly):")
+    println("  fusion     → `hexa-fusion …`     (need-singularity/hexa-fusion)")
+    println("  antimatter → `hexa-antimatter …` (need-singularity/hexa-antimatter)")
+    println("  rtsc       → `hexa-rtsc …`       (need-singularity/hexa-rtsc)")
+    println("  earth      → `hexa-earth …`      (need-singularity/hexa-earth)")
     println("")
     println("cost estimate (Mac local): $0 — spec-first dispatcher only.")
     println("")
@@ -327,6 +335,16 @@ fn main() {
               sub == "fuel-cell" || sub == "fuel_cell" ||
               sub == "thermal" || sub == "mining" || sub == "meta" {
         cmd_group(sub, a)
+    } else if sub == "fusion" || sub == "antimatter" || sub == "rtsc" {
+        // Out-of-scope axes live in dedicated sibling repos.
+        // Policy: do NOT proxy them through hexa-energy — point the user at the
+        // sibling CLI so they invoke it directly.
+        eprintln("hexa-energy: '" + sub + "' is out of scope here.")
+        eprintln("  → call the sibling CLI directly: `hexa-" + sub + " " +
+                 "<args…>`")
+        eprintln("  repo: https://github.com/need-singularity/hexa-" + sub)
+        _audit(sub, "out_of_scope", 2)
+        exit(2)
     } else {
         eprintln("hexa-energy: unknown subcommand '" + sub + "'")
         eprintln("run 'hexa-energy help' for usage")
