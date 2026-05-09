@@ -8,7 +8,7 @@
 
 - **Verb**: `hvac` (group: `thermal`)
 - **Parent (canonical SSOT)**: `../../core/energy/domain.md` (numerical SSOT, own 4)
-- **Upstream**: `n6-architecture/domains/energy/hvac-system/` @ `c0f1f570`
+- **Upstream**: `canon/domains/energy/hvac-system/` @ `c0f1f570`
 - **Status**: SPEC_FIRST (own 5) — markdown spec only at v1.0.0
 
 ## Edit invariants
@@ -40,7 +40,7 @@
 
 ## Lineage
 
-Extracted from `n6-architecture/domains/energy/hvac-system/` on 2026-05-06
+Extracted from `canon/domains/energy/hvac-system/` on 2026-05-06
 (SHA `c0f1f570`). Moved from repo root into `module/hvac/` on 2026-05-07
 during structural restructure to the hexa-sscb canonical pattern (see
 `../../doc/lineage/origin.md`).

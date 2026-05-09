@@ -10,7 +10,7 @@
 - **Verb**: `battery_energy`
 - **Group**: `battery` (one of 7 — battery / nuclear / grid / fuel-cell / thermal / mining / meta)
 - **Primary spec**: [`battery-energy.md`](battery-energy.md)
-- **Upstream**: `n6-architecture/domains/energy/battery-energy/` @ `c0f1f570` (extracted 2026-05-06)
+- **Upstream**: `canon/domains/energy/battery-energy/` @ `c0f1f570` (extracted 2026-05-06)
 
 ## What's in this module
 

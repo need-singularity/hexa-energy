@@ -10,7 +10,7 @@
 - **Verb**: `pv_microgrid`
 - **Group**: `grid` (one of 7 — battery / nuclear / grid / fuel-cell / thermal / mining / meta)
 - **Primary spec**: [`rooftop-pv-2nd-life-microgrid.md`](rooftop-pv-2nd-life-microgrid.md)
-- **Upstream**: `n6-architecture/domains/energy/rooftop-pv-2nd-life-microgrid/` @ `c0f1f570` (extracted 2026-05-06)
+- **Upstream**: `canon/domains/energy/rooftop-pv-2nd-life-microgrid/` @ `c0f1f570` (extracted 2026-05-06)
 
 ## What's in this module
 

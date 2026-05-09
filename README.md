@@ -2,7 +2,7 @@
 
 > **14-verb / 7-group integration substrate** governed by the **n=14 verb
 > lattice**. Battery + nuclear + grid + fuel-cell + thermal + mining + meta.
-> Spec-first MIT extraction from `n6-architecture/domains/energy/` @ `c0f1f570`.
+> Spec-first MIT extraction from `canon/domains/energy/` @ `c0f1f570`.
 >
 > **Out-of-scope axes — call sibling CLIs directly when needed**:
 > fusion → [`hexa-fusion`](https://github.com/need-singularity/hexa-fusion) ·
@@ -28,7 +28,7 @@
 
 `hexa-energy` is the **energy substrate** of the HEXA family. It groups
 **14 verbs across 7 groups**, extracted verbatim from
-`n6-architecture/domains/energy/` at SHA `c0f1f570` on 2026-05-06, and
+`canon/domains/energy/` at SHA `c0f1f570` on 2026-05-06, and
 repackaged as a public MIT substrate that downstream consumers can install
 via `hx install hexa-energy`.
 
@@ -98,7 +98,7 @@ modules; cross-verb references go through T1 (`core/energy/domain.md`).
 
 ## Verbs (14 / 7 groups)
 
-| Group       | Verbs                                          | Source (`n6-architecture/domains/energy/`)                                                                  |
+| Group       | Verbs                                          | Source (`canon/domains/energy/`)                                                                  |
 |-------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | battery     | `battery_arch`, `battery_energy`               | `battery-architecture/`, `battery-energy/`                                                                   |
 | nuclear     | `nuclear`, `smr_dc`, `dc_reactor`              | `nuclear-reactor/`, `smr-datacenter/`, `datacenter-reactor/`                                                 |
@@ -222,10 +222,10 @@ Sister substrates (structural pattern reference): [`hexa-sscb`](https://github.c
 
 ## Provenance
 
-- Extracted from `n6-architecture/domains/energy/` at SHA `c0f1f570` on 2026-05-06.
+- Extracted from `canon/domains/energy/` at SHA `c0f1f570` on 2026-05-06.
 - Restructured to the canonical `core/<feature>/ + module/<sub>/ + README.ai.md`
   triplet on 2026-05-07.
-- Original specs remain canonical in n6-architecture; this repo is a verbatim
+- Original specs remain canonical in canon; this repo is a verbatim
   copy of the 14 selected subdomains, repackaged as a public MIT substrate.
 - Per-file provenance: [`doc/lineage/origin.md`](doc/lineage/origin.md).
 

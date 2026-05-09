@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/energy/rooftop-pv-2nd-life-microgrid/rooftop-pv-2nd-life-microgrid.md -->
+<!-- @canonical: canon@0570a835:domains/energy/rooftop-pv-2nd-life-microgrid/rooftop-pv-2nd-life-microgrid.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: 55d056fd71fe5f8b28582f5cef2d464d -->
 <!-- gold-standard: shared/harness/sample.md -->
@@ -968,7 +968,7 @@ Test plan:
 | DEHN (DE) / Furse (UK) | lightning protection | IEC 62305 surge + earthing |
 | Rittal (DE) | outdoor cabinet | IP65 enclosure |
 | Local SA installer (SAREM-certified) | installation + commissioning | NRS-097-2 / NERSA SSEG |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

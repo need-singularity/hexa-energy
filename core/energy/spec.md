@@ -2,7 +2,7 @@
 
 > Energy substrate of the HEXA family. n=14 verb lattice + 7-group integration
 > govern the substrate's identity. v1.0.0 ships as **SPEC_FIRST** (own 5):
-> 14/14 markdown specs extracted from `n6-architecture/domains/energy/`
+> 14/14 markdown specs extracted from `canon/domains/energy/`
 > @ `c0f1f570` (2026-05-06), 0/14 working `.hexa`/`.py` kernels.
 >
 > Sister CLIs called directly when their axes are needed (out of scope here):
@@ -13,7 +13,7 @@
 ## §1 WHY
 
 Energy is the load-bearing substrate beneath every other HEXA axis (compute,
-mobility, manufacturing, life-support). The n6-architecture monorepo had
+mobility, manufacturing, life-support). The canon monorepo had
 energy specs scattered across 14+ subdomains; `hexa-energy` consolidates
 them into a single MIT-licensed public spec-first substrate that downstream
 consumers can install via `hx install hexa-energy`.
@@ -52,7 +52,7 @@ the lattice equality must be restated across all five surfaces (`domain.md`,
 ## §3 REQUIRES (precursor domains)
 
 Each of the 14 verbs inherits its own precursor stack from upstream
-`n6-architecture/domains/energy/<upstream-name>/`. The integration
+`canon/domains/energy/<upstream-name>/`. The integration
 substrate adds two cross-cutting requirements:
 
 | Precursor | Role |
@@ -67,7 +67,7 @@ For per-verb precursors see `core/energy/domain.md` and
 
 ## §4 STRUCT — 14 verbs / 7 groups
 
-| Group | Verbs | Count | Source (`n6-architecture/domains/energy/`) |
+| Group | Verbs | Count | Source (`canon/domains/energy/`) |
 |---|---|---|---|
 | battery | `battery_arch`, `battery_energy` | 2 | `battery-architecture/`, `battery-energy/` |
 | nuclear | `nuclear`, `smr_dc`, `dc_reactor` | 3 | `nuclear-reactor/`, `smr-datacenter/`, `datacenter-reactor/` |

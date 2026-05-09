@@ -1,6 +1,6 @@
 # Origin & lineage
 
-This repository was extracted from the **n6-architecture** monorepo on
+This repository was extracted from the **canon** monorepo on
 **2026-05-06** (extraction SHA `c0f1f570`). On **2026-05-07** the repo was
 restructured to the canonical hexa-sscb pattern (raw 270/271/272/273 +
 arch.001 collapsed). This document records the upstream paths and the
@@ -9,14 +9,14 @@ propagated upstream to) the source-of-truth.
 
 > **2026-05-07 (post-restructure)**: 14 verb directories were moved from
 > repo root into `module/<verb>/` to align with the hexa-sscb canonical
-> pattern. Upstream paths (`n6-architecture/domains/energy/<upstream-name>/`)
+> pattern. Upstream paths (`canon/domains/energy/<upstream-name>/`)
 > remain unchanged; only the local layout was reorganised. File names
 > inside each verb dir are preserved verbatim — they remain 1:1 with the
 > upstream source-of-truth filenames.
 
 ## Upstream
 
-- Repo: `n6-architecture` (local working copy at `~/core/n6-architecture`)
+- Repo: `canon` (local working copy at `~/core/canon`)
 - Branch: `main`
 - Extraction date: 2026-05-06
 - Extraction SHA: `c0f1f570`
@@ -25,7 +25,7 @@ propagated upstream to) the source-of-truth.
 
 ## Verb roster — file-by-file provenance
 
-All 14 verbs sourced from `n6-architecture/domains/energy/<upstream-name>/`
+All 14 verbs sourced from `canon/domains/energy/<upstream-name>/`
 at SHA `c0f1f570`. Local layout is `module/<verb>/<verb>.md` (plus any
 sub-scale assets that lived under it upstream).
 
@@ -81,7 +81,7 @@ markdown filenames are preserved verbatim.
 
 If you change a file in `module/<verb>/<verb>.md` here and want to push it upstream:
 
-1. Reproduce the change in `n6-architecture/domains/energy/<upstream-name>/`.
+1. Reproduce the change in `canon/domains/energy/<upstream-name>/`.
 2. Update `core/energy/domain.md` (the numerical SSOT) so it stays consistent
    with the changed verb spec.
 3. If the change affects the verb roster (additions, removals, renames),
@@ -104,9 +104,9 @@ snapshots and must not be edited (own 3 + raw 91).
 
 | Commit | Date | Subject |
 |---|---|---|
-| `c0f1f570` | 2026-05-06 | n6-architecture working tree at extraction time |
-| `60c2523` | 2026-05-06 | hexa-energy v1.0.0 initial extraction from n6-architecture@c0f1f570 |
+| `c0f1f570` | 2026-05-06 | canon working tree at extraction time |
+| `60c2523` | 2026-05-06 | hexa-energy v1.0.0 initial extraction from canon@c0f1f570 |
 | `5148b38` | post | roadmap: add .roadmap.hexa_energy with terminal goal + checkpoints + falsifiers |
 | `0732898` | post | docs(README): normalize H1 to '# <emoji> <slug> — <tail>' prefix |
-| `1e2fe8f` | post | docs(seeds): inject @canonical provenance header (n6-architecture@0570a835) |
+| `1e2fe8f` | post | docs(seeds): inject @canonical provenance header (canon@0570a835) |
 | _this commit_ | 2026-05-07 | structural restructure to hexa-sscb pattern (core/+module/+verify/+.own+README.ai.md) |

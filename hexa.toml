@@ -2,7 +2,7 @@
 #
 # Spec: shared/hexa-lang/hexa-toml-spec.json (version 1.0.0)
 # Distribution target: hx install hexa-energy
-# Provenance: extracted from n6-architecture/domains/energy/ on 2026-05-06
+# Provenance: extracted from canon/domains/energy/ on 2026-05-06
 #             (n6-arch SHA c0f1f570). Sister to hexa-bio v1.0.0.
 
 [package]
@@ -59,14 +59,14 @@ meta      = ["arch", "efficiency"]
 
 # ── Closure provenance (raw#10 honest C3) ─────────────────
 # v1.0.0 closure: 14-verb spec substrate (7 groups). 0/14 verbs have working
-# .hexa CLI; 14/14 ship as spec-first markdown extracted from n6-architecture.
+# .hexa CLI; 14/14 ship as spec-first markdown extracted from canon.
 [closure]
 verbs_total = 14
 groups_total = 7
 verbs_wired = 0
 verbs_spec = 14
 verdict = "SPEC_FIRST"
-extracted_from = "n6-architecture/domains/energy/ @ c0f1f570"
+extracted_from = "canon/domains/energy/ @ c0f1f570"
 
 # ── Cross-link (sister substrates — invoke their CLIs directly) ──
 # Policy: when working inside hexa-energy and you need fusion or antimatter,

@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/energy/datacenter-reactor/datacenter-reactor.md -->
+<!-- @canonical: canon@0570a835:domains/energy/datacenter-reactor/datacenter-reactor.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: 0daf4d0723ffc9872e8bdf0a5d4bb637 -->
 <!-- gold-standard: shared/harness/sample.md -->

@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/energy/energy-efficiency/energy-efficiency.md -->
+<!-- @canonical: canon@0570a835:domains/energy/energy-efficiency/energy-efficiency.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: 42419e23de3b153411afb5331a7b2a20 -->
 <!-- gold-standard: shared/harness/sample.md -->

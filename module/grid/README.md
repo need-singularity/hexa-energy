@@ -10,7 +10,7 @@
 - **Verb**: `grid`
 - **Group**: `grid` (one of 7 — battery / nuclear / grid / fuel-cell / thermal / mining / meta)
 - **Primary spec**: [`power-grid.md`](power-grid.md)
-- **Upstream**: `n6-architecture/domains/energy/power-grid/` @ `c0f1f570` (extracted 2026-05-06)
+- **Upstream**: `canon/domains/energy/power-grid/` @ `c0f1f570` (extracted 2026-05-06)
 
 ## What's in this module
 

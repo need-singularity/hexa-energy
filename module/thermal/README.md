@@ -10,7 +10,7 @@
 - **Verb**: `thermal`
 - **Group**: `thermal` (one of 7 — battery / nuclear / grid / fuel-cell / thermal / mining / meta)
 - **Primary spec**: [`thermal-management.md`](thermal-management.md)
-- **Upstream**: `n6-architecture/domains/energy/thermal-management/` @ `c0f1f570` (extracted 2026-05-06)
+- **Upstream**: `canon/domains/energy/thermal-management/` @ `c0f1f570` (extracted 2026-05-06)
 
 ## What's in this module
 

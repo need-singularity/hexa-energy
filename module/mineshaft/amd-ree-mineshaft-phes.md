@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/energy/amd-ree-mineshaft-phes/amd-ree-mineshaft-phes.md -->
+<!-- @canonical: canon@0570a835:domains/energy/amd-ree-mineshaft-phes/amd-ree-mineshaft-phes.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: 4739d0c0736b73b9ed615b886bb62083 -->
 <!-- gold-standard: shared/harness/sample.md -->
@@ -973,7 +973,7 @@ Test plan:
 | Sasol / Omnia | HCl + lime reagents | re-leach + neutralization |
 | Eskom Holdings | 132 kV grid interconnect | grid wheeling per NERSA rules |
 | SA Department of Mineral Resources | licensing | mining + water-use license |
-| n6-architecture private framework | own_doc_lint / own31 lint | docs gate |
+| canon private framework | own_doc_lint / own31 lint | docs gate |
 
 ## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 

@@ -8,12 +8,12 @@ verb_count: 14
 group_count: 7
 verdict_v1_0_0: SPEC_FIRST
 extracted_from:
-  repo: n6-architecture
+  repo: canon
   path: domains/energy/
   sha: c0f1f570
   date: 2026-05-06
 requires:
-  - to: n6-architecture/domains/energy/
+  - to: canon/domains/energy/
     sha: c0f1f570
     reason: upstream SSOT for all 14 verb specs
   - to: HEXA family raw 270/271/272/273 + arch.001
@@ -41,7 +41,7 @@ out_of_scope_siblings:
 
 The energy substrate sits beneath compute (chip, datacenter, fab),
 mobility (EV, ESS, transport), manufacturing (industrial heat, electrolysis),
-and life-support (HVAC, water-pumping, cold chain). The n6-architecture
+and life-support (HVAC, water-pumping, cold chain). The canon
 monorepo had energy specs scattered across 14+ subdomains under
 `domains/energy/`; `hexa-energy` consolidates them into one substrate with
 the canonical hexa-sscb pattern (core/+module/+verify/+.own+README.ai.md).
@@ -320,7 +320,7 @@ sibling CLI binary.
 ## §10 PROVENANCE
 
 This file consolidates content from the v1.0.0 `README.md` (extraction-time)
-plus the per-verb spec headings under `n6-architecture/domains/energy/`
+plus the per-verb spec headings under `canon/domains/energy/`
 @ `c0f1f570`. Per-file mapping in
 [`../../doc/lineage/origin.md`](../../doc/lineage/origin.md).
 

@@ -13,7 +13,7 @@
   - group_count ≡ 7
   - per-group: battery 2 · nuclear 3 · grid 3 · fuel-cell 1 · thermal 2 · mining 1 · meta 2
 - **Verdict**: `SPEC_FIRST` (own 5) — 0/14 verbs wired, 14/14 markdown spec
-- **Parent (canonical SSOT)**: `n6-architecture/domains/energy/`
+- **Parent (canonical SSOT)**: `canon/domains/energy/`
 - **Distribution**: `https://github.com/need-singularity/hexa-energy` (public)
 
 ## Hierarchy (canonical pattern — raw 270/271/272/273 + arch.001 collapsed)
@@ -104,8 +104,8 @@ modules; cross-module references go through T1 (`core/energy/`).
 
 ## Lineage tag
 
-This repo was extracted from `n6-architecture` on 2026-05-06.
-Source: `n6-architecture/domains/energy/` @ `c0f1f570`. Per-file provenance
+This repo was extracted from `canon` on 2026-05-06.
+Source: `canon/domains/energy/` @ `c0f1f570`. Per-file provenance
 in [`doc/lineage/origin.md`](doc/lineage/origin.md).
 
 The structural restructure to the hexa-sscb pattern (core/+module/+verify/+

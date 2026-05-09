@@ -10,7 +10,7 @@
 - **Verb**: `arch`
 - **Group**: `meta` (one of 7 — battery / nuclear / grid / fuel-cell / thermal / mining / meta)
 - **Primary spec**: [`energy-architecture.md`](energy-architecture.md)
-- **Upstream**: `n6-architecture/domains/energy/energy-architecture/` @ `c0f1f570` (extracted 2026-05-06)
+- **Upstream**: `canon/domains/energy/energy-architecture/` @ `c0f1f570` (extracted 2026-05-06)
 
 ## What's in this module
 

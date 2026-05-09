@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/energy/smr-datacenter/smr-datacenter.md -->
+<!-- @canonical: canon@0570a835:domains/energy/smr-datacenter/smr-datacenter.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: 1d8059e3e7264396c0fb252bfdbcb0a3 -->
 <!-- gold-standard: shared/harness/sample.md -->

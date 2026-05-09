@@ -10,7 +10,7 @@
 - **Verb**: `smr_dc`
 - **Group**: `nuclear` (one of 7 — battery / nuclear / grid / fuel-cell / thermal / mining / meta)
 - **Primary spec**: [`smr-datacenter.md`](smr-datacenter.md)
-- **Upstream**: `n6-architecture/domains/energy/smr-datacenter/` @ `c0f1f570` (extracted 2026-05-06)
+- **Upstream**: `canon/domains/energy/smr-datacenter/` @ `c0f1f570` (extracted 2026-05-06)
 
 ## What's in this module
 

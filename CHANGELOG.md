@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Initial standalone extraction** of the Energy substrate from
-  `n6-architecture/domains/energy/` at SHA `c0f1f570`.
+  `canon/domains/energy/` at SHA `c0f1f570`.
 - **14 verbs across 7 groups** (verbatim `cp -R` of the source spec dirs):
   - `battery`     — `battery_arch`, `battery_energy`
   - `nuclear`     — `nuclear`, `smr_dc`, `dc_reactor`
@@ -46,6 +46,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Provenance
 
-- Extracted from: `n6-architecture/domains/energy/` @ `c0f1f570`
+- Extracted from: `canon/domains/energy/` @ `c0f1f570`
 - Sister-extraction reference: `hexa-bio` v1.0.0 (2026-05-04)
 - Single-commit initial release.

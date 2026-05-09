@@ -13,9 +13,9 @@
 # Authoritative rule content remains in `own N <status> ...` blocks below.
 #
 # This repo is the public distribution form of the HEXA-energy substrate,
-# extracted from n6-architecture/domains/energy/ on 2026-05-06 (n6-arch SHA
+# extracted from canon/domains/energy/ on 2026-05-06 (n6-arch SHA
 # c0f1f570). Sister-extraction of hexa-bio v1.0.0 and hexa-sscb mk1. Source
-# of truth for the spec stays upstream (n6-architecture/domains/energy/);
+# of truth for the spec stays upstream (canon/domains/energy/);
 # this repo extracts a frozen snapshot plus runnable artifacts (verify/,
 # tests/, cli/, build/).
 #
@@ -29,7 +29,7 @@
 # - claude opus / sonnet / haiku (AI agents — autonomous within own baselines)
 #
 # ## baselines
-# - n6-architecture canonical SSOT — extraction consumer (sync mapping in doc/lineage/origin.md)
+# - canon canonical SSOT — extraction consumer (sync mapping in doc/lineage/origin.md)
 # - core/energy/ directory name preserved post-extraction — must stay 1:1 with upstream domains/energy/
 # - 14-verb / 7-group integration substrate — the count is contractual; verb adds/removes need full lattice restatement
 # - doc-first repo with thin runnable surface (verify/ + tests/ + cli/ + build/ only)
@@ -41,7 +41,7 @@
 # - code permitted ONLY in verify/, tests/, cli/, build/ — new code locations require README + .own update before the implementing PR (own 3)
 # - core/energy/domain.md = SSOT for verb roster + integration topology; module/* derives, if numbers disagree domain.md wins (own 4)
 # - additive-only at doc layer — additions OK, renames/moves require doc/lineage/origin.md update + redirect note
-# - upstream sync mapping: module/<verb>/<verb>.md ↔ n6-architecture/domains/energy/<upstream-name>/  (mapping in doc/lineage/origin.md)
+# - upstream sync mapping: module/<verb>/<verb>.md ↔ canon/domains/energy/<upstream-name>/  (mapping in doc/lineage/origin.md)
 # - SPEC_FIRST verdict at v1.0.0 — 0/14 verbs ship a working .hexa kernel; selftest PASS = 14 verb-dirs present, NOT empirical claim validation (own 5)
 #
 # ## cross_link_to_specs
@@ -67,7 +67,7 @@
 # ## recent_strengthenings
 # - 2026-05-07: structural restructure to hexa-sscb pattern. Created core/energy/{spec,domain,doc/}, module/<verb>/ × 14 (moved from root), verify/, build/, doc/{archive,lineage}/, .own (this file), README.ai.md. cli/, tests/, hexa.toml, install.hexa preserved at root. Repo-root README emoji changed from ⚡ to 🔋 (avoid hexa-brain 🧠⚡ collision). own 1-5 land.
 # - 2026-05-07: fusion · antimatter · RT-SC reframed as out-of-scope axes — sibling CLIs (hexa-fusion / hexa-antimatter / hexa-rtsc) called directly; no proxy through hexa-energy. cli/hexa-energy.hexa returns friendly redirect on `fusion`/`antimatter`/`rtsc` subcommands.
-# - 2026-05-06: initial v1.0.0 extraction from n6-architecture@c0f1f570. 14-verb / 7-group integration substrate, SPEC_FIRST verdict (0/14 wired).
+# - 2026-05-06: initial v1.0.0 extraction from canon@c0f1f570. 14-verb / 7-group integration substrate, SPEC_FIRST verdict (0/14 wired).
 
 # hexa-energy/.own — project-local SSOT layer
 # 포맷: raw-format (.raw 와 동일 파서). 자세한 스펙: hive/self/raw_loader.hexa
@@ -133,7 +133,7 @@ own 4 new "hexa-energy-domain-md-numerical-ssot — 모든 숫자는 core/energy
   scope core/energy/domain.md 의 verb 표 / group 표 / 14·7 invariant / module/<verb>/<verb>.md 안의 모든 정량 claim.
   enforce raw:os-lock
   enforce-layer soft
-  enforce-layer-rationale soft 인 이유: module/<verb>/<verb>.md 는 n6-architecture upstream verbatim copy 이므로 domain.md 와 즉시 일치 보장은 어려움. 대신 verify/cross_doc_audit.py 가 분기 발생 시 경고 emit, 분기를 발견하면 domain.md 우선으로 reconcile 한다는 정책.
+  enforce-layer-rationale soft 인 이유: module/<verb>/<verb>.md 는 canon upstream verbatim copy 이므로 domain.md 와 즉시 일치 보장은 어려움. 대신 verify/cross_doc_audit.py 가 분기 발생 시 경고 emit, 분기를 발견하면 domain.md 우선으로 reconcile 한다는 정책.
   decl SSOT 우선순위: domain.md > spec.md > module/<verb>/<verb>.md > README.md > hexa.toml > cli VERB_DIRS
   decl 분기 처리: domain.md 와 module/<verb>/<verb>.md 가 어긋나면 domain.md 가 이긴다. domain.md 를 갱신하거나, module/<verb>/<verb>.md 를 domain.md 에 맞게 동기화한다.
   why hexa-sscb own 1 의 domain.md SSOT 정책과 동형. 다중 verb 인 hexa-energy 에서는 분기 발생 빈도가 더 높으므로 명시적 우선순위가 더 중요.

@@ -10,7 +10,7 @@
 - **Verb**: `mineshaft`
 - **Group**: `mining` (one of 7 — battery / nuclear / grid / fuel-cell / thermal / mining / meta)
 - **Primary spec**: [`amd-ree-mineshaft-phes.md`](amd-ree-mineshaft-phes.md)
-- **Upstream**: `n6-architecture/domains/energy/amd-ree-mineshaft-phes/` @ `c0f1f570` (extracted 2026-05-06)
+- **Upstream**: `canon/domains/energy/amd-ree-mineshaft-phes/` @ `c0f1f570` (extracted 2026-05-06)
 
 ## What's in this module
 

@@ -1,4 +1,4 @@
-<!-- @canonical: n6-architecture@0570a835:domains/energy/thermal-management/thermal-management.md -->
+<!-- @canonical: canon@0570a835:domains/energy/thermal-management/thermal-management.md -->
 <!-- @extracted: 2026-05-06 -->
 <!-- @md5_at_extraction: 4500567a1522254f541e2a0bc6bd69e6 -->
 <!-- gold-standard: shared/harness/sample.md -->

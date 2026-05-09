@@ -2,7 +2,7 @@
 
 **Release date**: 2026-05-06
 **Closure verdict**: **SPEC_FIRST** (0/14 verbs wired; 14/14 markdown specs extracted)
-**Provenance**: `n6-architecture/domains/energy/` @ `c0f1f570`
+**Provenance**: `canon/domains/energy/` @ `c0f1f570`
 
 > **Cross-link** (load-bearing — fusion·RT-SC are NOT here):
 > fusion → [`need-singularity/hexa-fusion`](https://github.com/need-singularity/hexa-fusion) ·
@@ -67,7 +67,7 @@ hexa-energy meta
 
 ## Provenance
 
-- Extracted from `n6-architecture/domains/energy/` at SHA `c0f1f570` (2026-05-06).
+- Extracted from `canon/domains/energy/` at SHA `c0f1f570` (2026-05-06).
 - Sister: `hexa-bio` v1.0.0 extraction pattern (2026-05-04).
 - Single-commit initial release.
 

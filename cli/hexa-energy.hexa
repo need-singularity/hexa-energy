@@ -121,7 +121,7 @@ fn _print_caveats() {
     println("--- caveats (raw#10 C3) ---")
     println("  1. v1.0.0 is SPEC-FIRST: 0/14 verbs ship a working .hexa kernel.")
     println("     All 14 verb directories contain markdown specs extracted from")
-    println("     n6-architecture/domains/energy/ @ c0f1f570 (no numerical impl).")
+    println("     canon/domains/energy/ @ c0f1f570 (no numerical impl).")
     println("  2. Fusion is OUT OF SCOPE — call `hexa-fusion …` CLI directly.")
     println("  3. Antimatter is OUT OF SCOPE — call `hexa-antimatter …` CLI directly.")
     println("  4. RT-SC (room-temp superconductor) is OUT OF SCOPE — call")
@@ -241,7 +241,7 @@ fn cmd_selftest(a: [str]) {
 
 fn cmd_version() {
     println("hexa-energy " + VERSION)
-    println("standalone Energy substrate (HEXA family — extracted from n6-architecture@c0f1f570 on 2026-05-06)")
+    println("standalone Energy substrate (HEXA family — extracted from canon@c0f1f570 on 2026-05-06)")
     println("license: MIT")
     println("repo:    https://github.com/need-singularity/hexa-energy")
     println("sisters: hexa-fusion · hexa-antimatter · hexa-rtsc · hexa-earth")
