@@ -10,6 +10,7 @@
 > RT-SC → [`hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc) ·
 > climate cousin → [`hexa-earth`](https://github.com/need-singularity/hexa-earth)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20102606.svg)](https://doi.org/10.5281/zenodo.20102606)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-informational.svg)](CHANGELOG.md)
 [![Verbs: 14 / 7 groups](https://img.shields.io/badge/verbs-14_%2F_7_groups-blue.svg)](#verbs-14--7-groups)
