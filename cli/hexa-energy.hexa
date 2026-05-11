@@ -18,10 +18,10 @@
 //   --version   — print version
 //
 // Cross-link sister substrates (NOT in this repo — call their own CLIs directly):
-//   need-singularity/hexa-fusion      — fusion (use `hexa-fusion …` directly)
-//   need-singularity/hexa-antimatter  — antimatter (use `hexa-antimatter …` directly)
-//   need-singularity/hexa-rtsc        — RT-SC (별도 standalone)
-//   need-singularity/hexa-earth       — climate cousin (carbon-capture · env-protection)
+//   dancinlab/hexa-fusion      — fusion (use `hexa-fusion …` directly)
+//   dancinlab/hexa-antimatter  — antimatter (use `hexa-antimatter …` directly)
+//   dancinlab/hexa-rtsc        — RT-SC (별도 standalone)
+//   dancinlab/hexa-earth       — climate cousin (carbon-capture · env-protection)
 //
 // Root resolution: $HEXA_ENERGY_ROOT env, else inferred from $0 dirname.
 //
@@ -127,7 +127,7 @@ fn _print_caveats() {
     println("  4. RT-SC (room-temp superconductor) is OUT OF SCOPE — call")
     println("     `hexa-rtsc …` CLI directly.")
     println("  5. Climate / carbon-capture / environmental-protection lives in")
-    println("     need-singularity/hexa-earth (cousin substrate).")
+    println("     dancinlab/hexa-earth (cousin substrate).")
     println("  6. selftest PASS = 14 verb directories present; does NOT imply any")
     println("     empirical claim has been validated.")
 }
@@ -200,10 +200,10 @@ fn cmd_status(a: [str]) {
     println("  verdict: SPEC_FIRST (0/14 .hexa kernels wired; 14/14 markdown specs)")
     println("")
     println("  cross-link sisters (out of scope — call their CLIs directly):")
-    println("    fusion     → `hexa-fusion …`     (need-singularity/hexa-fusion)")
-    println("    antimatter → `hexa-antimatter …` (need-singularity/hexa-antimatter)")
-    println("    rtsc       → `hexa-rtsc …`       (need-singularity/hexa-rtsc)")
-    println("    earth      → `hexa-earth …`      (need-singularity/hexa-earth, climate cousin)")
+    println("    fusion     → `hexa-fusion …`     (dancinlab/hexa-fusion)")
+    println("    antimatter → `hexa-antimatter …` (dancinlab/hexa-antimatter)")
+    println("    rtsc       → `hexa-rtsc …`       (dancinlab/hexa-rtsc)")
+    println("    earth      → `hexa-earth …`      (dancinlab/hexa-earth, climate cousin)")
     _print_caveats()
 }
 
@@ -243,7 +243,7 @@ fn cmd_version() {
     println("hexa-energy " + VERSION)
     println("standalone Energy substrate (HEXA family — extracted from canon@c0f1f570 on 2026-05-06)")
     println("license: MIT")
-    println("repo:    https://github.com/need-singularity/hexa-energy")
+    println("repo:    https://github.com/dancinlab/hexa-energy")
     println("sisters: hexa-fusion · hexa-antimatter · hexa-rtsc · hexa-earth")
     println("note:    fusion·antimatter·rtsc are out of scope here — call their CLIs directly.")
 }
@@ -277,10 +277,10 @@ fn cmd_help() {
     println("  HEXA_ENERGY_ROOT   override repo root (default: inferred from $0)")
     println("")
     println("cross-link sisters (NOT in this repo — call their CLIs directly):")
-    println("  fusion     → `hexa-fusion …`     (need-singularity/hexa-fusion)")
-    println("  antimatter → `hexa-antimatter …` (need-singularity/hexa-antimatter)")
-    println("  rtsc       → `hexa-rtsc …`       (need-singularity/hexa-rtsc)")
-    println("  earth      → `hexa-earth …`      (need-singularity/hexa-earth)")
+    println("  fusion     → `hexa-fusion …`     (dancinlab/hexa-fusion)")
+    println("  antimatter → `hexa-antimatter …` (dancinlab/hexa-antimatter)")
+    println("  rtsc       → `hexa-rtsc …`       (dancinlab/hexa-rtsc)")
+    println("  earth      → `hexa-earth …`      (dancinlab/hexa-earth)")
     println("")
     println("cost estimate (Mac local): $0 — spec-first dispatcher only.")
     println("")
@@ -342,7 +342,7 @@ fn main() {
         eprintln("hexa-energy: '" + sub + "' is out of scope here.")
         eprintln("  → call the sibling CLI directly: `hexa-" + sub + " " +
                  "<args…>`")
-        eprintln("  repo: https://github.com/need-singularity/hexa-" + sub)
+        eprintln("  repo: https://github.com/dancinlab/hexa-" + sub)
         _audit(sub, "out_of_scope", 2)
         exit(2)
     } else {

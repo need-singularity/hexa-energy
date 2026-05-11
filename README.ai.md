@@ -14,7 +14,7 @@
   - per-group: battery 2 · nuclear 3 · grid 3 · fuel-cell 1 · thermal 2 · mining 1 · meta 2
 - **Verdict**: `SPEC_FIRST` (own 5) — 0/14 verbs wired, 14/14 markdown spec
 - **Parent (canonical SSOT)**: `canon/domains/energy/`
-- **Distribution**: `https://github.com/need-singularity/hexa-energy` (public)
+- **Distribution**: `https://github.com/dancinlab/hexa-energy` (public)
 
 ## Hierarchy (canonical pattern — raw 270/271/272/273 + arch.001 collapsed)
 

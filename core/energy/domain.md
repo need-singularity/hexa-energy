@@ -305,10 +305,10 @@ inside this repo and you need any of them — call the sibling CLI directly:
 
 | Sibling | Scope | How to invoke |
 |---|---|---|
-| [`hexa-fusion`](https://github.com/need-singularity/hexa-fusion) | fusion-powerplant + tabletop-fusion + plasma-deep | `hexa-fusion …` |
-| [`hexa-antimatter`](https://github.com/need-singularity/hexa-antimatter) | antimatter-factory + tabletop + PET cyclotron | `hexa-antimatter …` |
-| [`hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc) | room-temp-sc + superconductor | `hexa-rtsc …` |
-| [`hexa-earth`](https://github.com/need-singularity/hexa-earth) | carbon-capture · environmental-protection · climate adaptation | `hexa-earth …` |
+| [`hexa-fusion`](https://github.com/dancinlab/hexa-fusion) | fusion-powerplant + tabletop-fusion + plasma-deep | `hexa-fusion …` |
+| [`hexa-antimatter`](https://github.com/dancinlab/hexa-antimatter) | antimatter-factory + tabletop + PET cyclotron | `hexa-antimatter …` |
+| [`hexa-rtsc`](https://github.com/dancinlab/hexa-rtsc) | room-temp-sc + superconductor | `hexa-rtsc …` |
+| [`hexa-earth`](https://github.com/dancinlab/hexa-earth) | carbon-capture · environmental-protection · climate adaptation | `hexa-earth …` |
 
 Do NOT proxy them through `hexa-energy`. Do NOT re-vendor their specs here.
 The CLI dispatcher (`cli/hexa-energy.hexa`) returns a friendly redirect on

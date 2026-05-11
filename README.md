@@ -5,10 +5,10 @@
 > Spec-first MIT extraction from `canon/domains/energy/` @ `c0f1f570`.
 >
 > **Out-of-scope axes — call sibling CLIs directly when needed**:
-> fusion → [`hexa-fusion`](https://github.com/need-singularity/hexa-fusion) ·
-> antimatter → [`hexa-antimatter`](https://github.com/need-singularity/hexa-antimatter) ·
-> RT-SC → [`hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc) ·
-> climate cousin → [`hexa-earth`](https://github.com/need-singularity/hexa-earth)
+> fusion → [`hexa-fusion`](https://github.com/dancinlab/hexa-fusion) ·
+> antimatter → [`hexa-antimatter`](https://github.com/dancinlab/hexa-antimatter) ·
+> RT-SC → [`hexa-rtsc`](https://github.com/dancinlab/hexa-rtsc) ·
+> climate cousin → [`hexa-earth`](https://github.com/dancinlab/hexa-earth)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20102606.svg)](https://doi.org/10.5281/zenodo.20102606)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -161,7 +161,7 @@ hx install hexa-energy@1.0.0
 hexa-energy --version          # → 1.0.0
 
 # Or git clone (works today):
-git clone https://github.com/need-singularity/hexa-energy.git ~/.hexa-energy
+git clone https://github.com/dancinlab/hexa-energy.git ~/.hexa-energy
 export HEXA_ENERGY_ROOT=~/.hexa-energy
 export PATH="$HEXA_ENERGY_ROOT/cli:$PATH"
 hexa-energy selftest
@@ -211,13 +211,13 @@ their own standalone repos — **invoke their CLIs directly**:
 
 | Sibling                                                                  | Scope                                                              | How to use from a hexa-energy session     |
 |--------------------------------------------------------------------------|--------------------------------------------------------------------|-------------------------------------------|
-| [`hexa-fusion`](https://github.com/need-singularity/hexa-fusion)         | fusion-powerplant + tabletop-fusion + plasma-deep                  | `hexa-fusion …` (sibling CLI, direct)     |
-| [`hexa-antimatter`](https://github.com/need-singularity/hexa-antimatter) | antimatter-factory + tabletop + PET cyclotron                      | `hexa-antimatter …` (sibling CLI, direct) |
-| [`hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc)             | room-temp-sc + superconductor                                      | `hexa-rtsc …` (sibling CLI, direct)       |
-| [`hexa-earth`](https://github.com/need-singularity/hexa-earth)           | carbon-capture · environmental-protection · climate adaptation     | `hexa-earth …` (sibling CLI, direct)      |
+| [`hexa-fusion`](https://github.com/dancinlab/hexa-fusion)         | fusion-powerplant + tabletop-fusion + plasma-deep                  | `hexa-fusion …` (sibling CLI, direct)     |
+| [`hexa-antimatter`](https://github.com/dancinlab/hexa-antimatter) | antimatter-factory + tabletop + PET cyclotron                      | `hexa-antimatter …` (sibling CLI, direct) |
+| [`hexa-rtsc`](https://github.com/dancinlab/hexa-rtsc)             | room-temp-sc + superconductor                                      | `hexa-rtsc …` (sibling CLI, direct)       |
+| [`hexa-earth`](https://github.com/dancinlab/hexa-earth)           | carbon-capture · environmental-protection · climate adaptation     | `hexa-earth …` (sibling CLI, direct)      |
 
-Sister substrates (structural pattern reference): [`hexa-sscb`](https://github.com/need-singularity/hexa-sscb)
-(compute, mk1) · [`hexa-bio`](https://github.com/need-singularity/hexa-bio) (life).
+Sister substrates (structural pattern reference): [`hexa-sscb`](https://github.com/dancinlab/hexa-sscb)
+(compute, mk1) · [`hexa-bio`](https://github.com/dancinlab/hexa-bio) (life).
 
 ---
 

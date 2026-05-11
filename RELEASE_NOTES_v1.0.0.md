@@ -5,9 +5,9 @@
 **Provenance**: `canon/domains/energy/` @ `c0f1f570`
 
 > **Cross-link** (load-bearing — fusion·RT-SC are NOT here):
-> fusion → [`need-singularity/hexa-fusion`](https://github.com/need-singularity/hexa-fusion) ·
-> RT-SC → [`need-singularity/hexa-rtsc`](https://github.com/need-singularity/hexa-rtsc) ·
-> climate cousin → [`need-singularity/hexa-earth`](https://github.com/need-singularity/hexa-earth)
+> fusion → [`dancinlab/hexa-fusion`](https://github.com/dancinlab/hexa-fusion) ·
+> RT-SC → [`dancinlab/hexa-rtsc`](https://github.com/dancinlab/hexa-rtsc) ·
+> climate cousin → [`dancinlab/hexa-earth`](https://github.com/dancinlab/hexa-earth)
 
 This is the **initial standalone release** of `hexa-energy`, a 14-verb / 7-group Energy substrate consolidating battery, nuclear, grid, fuel-cell, HVAC, and mineshaft specs into a single MIT-licensed public substrate. Sister-extraction of `hexa-bio` v1.0.0 (2026-05-04).
 
@@ -27,7 +27,7 @@ This is the **initial standalone release** of `hexa-energy`, a 14-verb / 7-group
 - **Placeholder CLI dispatcher** — `cli/hexa-energy.hexa` routes to all 7 groups + ships `status`, `selftest`, `--version`, `help`. Numerical kernels deferred.
 - **Selftest** — `__HEXA_ENERGY_SELFTEST__ PASS` confirms 14 verb directories are present (sentinel-only PASS does NOT validate any empirical claim).
 - **MIT licensed** — permissive, no copyleft, no aux deps required at v1.0.0.
-- **GitHub canonical** — `https://github.com/need-singularity/hexa-energy`.
+- **GitHub canonical** — `https://github.com/dancinlab/hexa-energy`.
 
 ## Installation
 
@@ -37,7 +37,7 @@ hx install hexa-energy@1.0.0
 hexa-energy --version           # → 1.0.0
 
 # Or git clone (works today):
-git clone https://github.com/need-singularity/hexa-energy.git ~/.hexa-energy
+git clone https://github.com/dancinlab/hexa-energy.git ~/.hexa-energy
 export HEXA_ENERGY_ROOT=~/.hexa-energy
 export PATH="$HEXA_ENERGY_ROOT/cli:$PATH"
 hexa-energy selftest

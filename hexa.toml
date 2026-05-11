@@ -12,8 +12,8 @@ entry = "cli/hexa-energy.hexa"
 description = "Energy 통합 substrate (HEXA family) — battery + nuclear + grid + fuel-cell + HVAC + mineshaft 14-verb (fusion·antimatter·rtsc 외). Spec-first; 작동 .hexa CLI TBD. Fusion·antimatter·RT-SC는 별도 standalone — hexa-energy 작업 중 필요하면 해당 sibling CLI(hexa-fusion / hexa-antimatter / hexa-rtsc)를 직접 호출."
 license = "MIT"
 authors = ["박민우 <nerve011235@gmail.com>"]
-repository = "https://github.com/need-singularity/hexa-energy"
-homepage = "https://github.com/need-singularity/hexa-energy"
+repository = "https://github.com/dancinlab/hexa-energy"
+homepage = "https://github.com/dancinlab/hexa-energy"
 readme = "README.md"
 keywords = ["energy", "battery", "nuclear", "grid", "fuel-cell", "hvac", "mineshaft", "solar", "pemfc", "smr", "hexa-family"]
 categories = ["energy-systems", "infrastructure", "spec-substrate"]
@@ -73,10 +73,10 @@ extracted_from = "canon/domains/energy/ @ c0f1f570"
 #         call the sibling CLI directly (hexa-fusion …, hexa-antimatter …).
 #         Do NOT re-implement, re-vendor, or proxy these axes through hexa-energy.
 [crosslink]
-fusion     = "need-singularity/hexa-fusion (fusion 별도 standalone — call `hexa-fusion` CLI directly)"
-antimatter = "need-singularity/hexa-antimatter (antimatter 별도 standalone — call `hexa-antimatter` CLI directly)"
-rtsc       = "need-singularity/hexa-rtsc (RT-SC 별도 standalone — call `hexa-rtsc` CLI directly)"
-earth      = "need-singularity/hexa-earth (climate cousin — carbon-capture · environmental-protection)"
+fusion     = "dancinlab/hexa-fusion (fusion 별도 standalone — call `hexa-fusion` CLI directly)"
+antimatter = "dancinlab/hexa-antimatter (antimatter 별도 standalone — call `hexa-antimatter` CLI directly)"
+rtsc       = "dancinlab/hexa-rtsc (RT-SC 별도 standalone — call `hexa-rtsc` CLI directly)"
+earth      = "dancinlab/hexa-earth (climate cousin — carbon-capture · environmental-protection)"
 
 # ── Scope honesty (raw#10 C3) ─────────────────────────────
 [scope]
