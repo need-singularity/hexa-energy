@@ -156,36 +156,35 @@ them, **call the sibling CLI directly** — do NOT proxy or re-vendor.
 ## Install
 
 ```bash
-# Recommended (post-hx install registration):
-hx install hexa-energy@1.0.0
-hexa-energy --version          # → 1.0.0
+# 1. Install hexa-lang (ships `hexa` + `hx` package manager)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dancinlab/hexa-lang/main/install.sh)"
 
-# Or git clone (works today):
-git clone https://github.com/dancinlab/hexa-energy.git ~/.hexa-energy
-export HEXA_ENERGY_ROOT=~/.hexa-energy
-export PATH="$HEXA_ENERGY_ROOT/cli:$PATH"
-hexa-energy selftest
+# 2. Install hexa-energy
+hx install hexa-energy          # global, pulls latest from registry
 ```
 
----
+## Run
 
-## Build & verify
+```bash
+hexa-energy battery         # battery_arch, battery_energy                  [SPEC]
+hexa-energy nuclear         # nuclear, smr_dc, dc_reactor                   [SPEC]
+hexa-energy grid            # grid, pv_microgrid, solar                     [SPEC]
+hexa-energy fuel-cell       # pemfc                                          [SPEC]
+hexa-energy thermal         # hvac, thermal                                  [SPEC]
+hexa-energy mining          # mineshaft                                      [SPEC]
+hexa-energy meta            # arch, efficiency                               [SPEC]
+hexa-energy status          # 14-verb table + verdict + caveats
+hexa-energy selftest        # verify 14 verb dirs present (__HEXA_ENERGY_SELFTEST__ PASS)
+hexa-energy version         # print version
+hexa-energy help            # full --help (subcommands + env vars + cross-link)
+```
+
+## Verify
 
 ```bash
 # Invariant audits (Python stdlib only — no third-party deps):
 python3 verify/energy_verify.py        # n=14 verb / 7-group lattice (3 checks; exit 0 = PASS)
 python3 verify/cross_doc_audit.py      # cross-doc consistency (4 checks; exit 0 = PASS)
-
-# Group-level CLI routing:
-hexa-energy status                     # 7-group table + verdict + caveats
-hexa-energy selftest                   # 14-verb directory sentinel sweep
-hexa-energy battery                    # group routing → battery_arch, battery_energy
-hexa-energy nuclear                    # → nuclear, smr_dc, dc_reactor
-hexa-energy grid                       # → grid, pv_microgrid, solar
-hexa-energy fuel-cell                  # → pemfc
-hexa-energy thermal                    # → hvac, thermal
-hexa-energy mining                     # → mineshaft
-hexa-energy meta                       # → arch, efficiency
 ```
 
 #### When you need fusion / antimatter / RT-SC
