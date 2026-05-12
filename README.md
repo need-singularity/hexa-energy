@@ -97,27 +97,6 @@ modules; cross-verb references go through T1 (`core/energy/domain.md`).
 
 ---
 
-## Verbs (14 / 7 groups)
-
-| Group       | Verbs                                          | Source (`canon/domains/energy/`)                                                                  |
-|-------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| battery     | `battery_arch`, `battery_energy`               | `battery-architecture/`, `battery-energy/`                                                                   |
-| nuclear     | `nuclear`, `smr_dc`, `dc_reactor`              | `nuclear-reactor/`, `smr-datacenter/`, `datacenter-reactor/`                                                 |
-| grid        | `grid`, `pv_microgrid`, `solar`                | `power-grid/`, `rooftop-pv-2nd-life-microgrid/`, `solar-architecture/`                                       |
-| fuel-cell   | `pemfc`                                        | `pemfc/`                                                                                                     |
-| thermal     | `hvac`, `thermal`                              | `hvac-system/`, `thermal-management/`                                                                        |
-| mining      | `mineshaft`                                    | `amd-ree-mineshaft-phes/`                                                                                    |
-| meta        | `arch`, `efficiency`                           | `energy-architecture/`, `energy-efficiency/`                                                                 |
-
-Total: **14 verbs / 7 groups**. Each verb's spec markdown lives at
-`module/<verb>/<verb>.md` (verbatim from upstream); the per-module
-`README.md` + `README.ai.md` add the integration metadata.
-
-For the canonical group ledger and integration topology see
-[`core/energy/domain.md`](core/energy/domain.md) §4.
-
----
-
 ## Module inventory
 
 | Path | What it is |
