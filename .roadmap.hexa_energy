@@ -2,7 +2,7 @@
 
 > Cross-cutting state: invariant lattice, release cadence, cycle history,
 > deadlines, pointers. Sister of `hexa-fusion` / `hexa-rtsc` / `hexa-earth`
-> under `need-singularity` org. **fusion·RT-SC 별도 standalone**.
+> under `dancinlab` org. **fusion·RT-SC 별도 standalone**.
 
 **Last sync**: 2026-05-06 · **Current release**: v1.0.0 · **Branch**: `main`
 

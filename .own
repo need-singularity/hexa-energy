@@ -57,12 +57,12 @@
 # - mk2.arch.001 — hive raw.mk2 arch.001 collapsed pattern (this repo's structural baseline)
 #
 # ## cross_link_to_sisters
-# - need-singularity/hexa-sscb — pattern reference (single-feature core, 4-foundry stack)
-# - need-singularity/hexa-bio — sister extraction (life substrate)
-# - need-singularity/hexa-fusion — fusion frontier (out of scope here; call CLI directly)
-# - need-singularity/hexa-antimatter — antimatter (out of scope here; call CLI directly)
-# - need-singularity/hexa-rtsc — RT-SC (out of scope here; call CLI directly)
-# - need-singularity/hexa-earth — climate cousin (carbon-capture · environmental-protection)
+# - dancinlab/hexa-sscb — pattern reference (single-feature core, 4-foundry stack)
+# - dancinlab/hexa-bio — sister extraction (life substrate)
+# - dancinlab/hexa-fusion — fusion frontier (out of scope here; call CLI directly)
+# - dancinlab/hexa-antimatter — antimatter (out of scope here; call CLI directly)
+# - dancinlab/hexa-rtsc — RT-SC (out of scope here; call CLI directly)
+# - dancinlab/hexa-earth — climate cousin (carbon-capture · environmental-protection)
 #
 # ## recent_strengthenings
 # - 2026-05-07: structural restructure to hexa-sscb pattern. Created core/energy/{spec,domain,doc/}, module/<verb>/ × 14 (moved from root), verify/, build/, doc/{archive,lineage}/, .own (this file), README.ai.md. cli/, tests/, hexa.toml, install.hexa preserved at root. Repo-root README emoji changed from ⚡ to 🔋 (avoid hexa-brain 🧠⚡ collision). own 1-5 land.
