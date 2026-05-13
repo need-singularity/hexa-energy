@@ -15,6 +15,7 @@
 [![Version](https://img.shields.io/badge/version-1.0.0-informational.svg)](CHANGELOG.md)
 [![Verbs: 14 / 7 groups](https://img.shields.io/badge/verbs-14_%2F_7_groups-blue.svg)](#verbs-14--7-groups)
 [![Wired: 0/14](https://img.shields.io/badge/wired-0%2F14_(SPEC__FIRST)-orange.svg)](#status)
+[![Closure: 7/7](https://img.shields.io/badge/closure-7%2F7_PASS_(lattice%2Bcross--doc)-brightgreen.svg)](#verify)
 [![Provenance](https://img.shields.io/badge/from-n6--arch%40c0f1f570-purple.svg)](doc/lineage/origin.md)
 [![Pattern](https://img.shields.io/badge/pattern-hexa--sscb_(raw_270%2F271%2F272%2F273)-blueviolet.svg)](README.ai.md)
 
@@ -75,8 +76,9 @@ hexa-energy/
 │   ├── mineshaft/
 │   └── arch/  efficiency/
 ├── verify/                            ← runnable invariant audit (Python stdlib)
-│   ├── energy_verify.py               ← n=14 verb / 7-group lattice audit
-│   └── cross_doc_audit.py             ← cross-document consistency audit
+│   ├── run_all.hexa                   ← sister-pattern orchestrator (chains the 2 audits below)
+│   ├── energy_verify.py               ← n=14 verb / 7-group lattice audit (3 checks)
+│   └── cross_doc_audit.py             ← cross-document consistency audit (4 checks)
 ├── tests/                             ← pytest acceptance scaffold
 ├── cli/                               ← .hexa dispatcher (hexa-energy router)
 │   └── hexa-energy.hexa
@@ -105,8 +107,9 @@ modules; cross-verb references go through T1 (`core/energy/domain.md`).
 | [`core/energy/domain.md`](core/energy/domain.md) | Full domain — verb ledger / group ledger / integration topology / out-of-scope policy. **Numerical SSOT (own 4).** |
 | [`core/energy/doc/groups.md`](core/energy/doc/groups.md) | Group · verb cross-reference + downstream composition examples |
 | [`module/<verb>/`](module/) × 14 | Per-verb spec markdown (verbatim from upstream) + `README.md` + `README.ai.md` |
+| [`verify/run_all.hexa`](verify/run_all.hexa) | Sister-pattern orchestrator — chains the two audits below; **7/7 PASS** at native closure |
 | [`verify/energy_verify.py`](verify/energy_verify.py) | n=14 verb / 7-group lattice audit (verb sentinel + group sentinel + 4-surface verb_count == 14) |
-| [`verify/cross_doc_audit.py`](verify/cross_doc_audit.py) | Cross-document consistency (per-group counts + verdict honesty + out-of-scope phrasing + no-rogue-code) |
+| [`verify/cross_doc_audit.py`](verify/cross_doc_audit.py) | Cross-document consistency (per-group counts + verdict honesty + out-of-scope phrasing + no-rogue-code; canon-archive `origins/`+`papers/` exempt per own 3 strengthening 2026-05-13) |
 | [`cli/hexa-energy.hexa`](cli/hexa-energy.hexa) | Placeholder dispatcher — group routing + selftest + status; out-of-scope subcommands redirect to sibling CLIs |
 | [`tests/`](tests/) | pytest / .hexa acceptance scaffold |
 | [`build/`](build/) | Pandoc PDF rebuild (TBD) |
@@ -160,11 +163,30 @@ hexa-energy help            # full --help (subcommands + env vars + cross-link)
 
 ## Verify
 
+Native closure pattern = **7/7 PASS** across two stdlib-only audits
+(SPEC_FIRST substrate: structural / cross-document checks only — no empirical
+claim is validated; verdict-honesty per own 5 + raw#10 C3):
+
 ```bash
-# Invariant audits (Python stdlib only — no third-party deps):
+# Sister-pattern orchestrator (chains the two python audits):
+hexa run verify/run_all.hexa           # 2 scripts → 7 checks total; exit 0 = all PASS
+
+# Or run each audit directly (Python stdlib only — no third-party deps):
 python3 verify/energy_verify.py        # n=14 verb / 7-group lattice (3 checks; exit 0 = PASS)
 python3 verify/cross_doc_audit.py      # cross-doc consistency (4 checks; exit 0 = PASS)
 ```
+
+**Scoreboard (2026-05-13)** — `__HEXA_ENERGY_VERIFY__ PASS` + `__HEXA_ENERGY_CROSS_DOC__ PASS`:
+
+| Audit                              | Checks | Status |
+|------------------------------------|--------|--------|
+| `verify/energy_verify.py`          | 3      | 3/3 PASS — verb sentinel · group sentinel · 4-surface lattice equality |
+| `verify/cross_doc_audit.py`        | 4      | 4/4 PASS — per-group counts · verdict honesty · out-of-scope phrasing · no-rogue-code |
+| **Total native closure**           | **7**  | **7/7 PASS** |
+
+PASS does **not** imply any `module/<verb>/<verb>.md` quantitative claim has
+been empirically validated. The `verbs_wired = 0/14` badge remains the
+canonical honesty signal (own 5).
 
 #### When you need fusion / antimatter / RT-SC
 

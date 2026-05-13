@@ -14,6 +14,9 @@ Checks (own 1, own 2, own 5, own 6):
        "proxy" / "vendored").
   4. No rogue code outside the four allowed locations (verify/, tests/,
        cli/, build/, plus module/<verb>/verify_<verb>.{hexa,py}).
+       Canon-import archives (origins/, papers/ — see IMPORTED_FROM_CANON.md)
+       are exempt: they hold immutable predecessor snapshots moved out of
+       dancinlab/canon, treated as provenance under own 3, not new code.
 
 PASS does NOT imply any quantitative claim has been empirically validated
 (own 5 — SPEC_FIRST verdict).
@@ -50,6 +53,13 @@ FORBIDDEN_FRAMINGS = ["federated", "Federated", "passthrough", "Passthrough",
 ALLOWED_CODE_DIRS = ["verify", "tests", "cli", "build"]
 # Per-verb verifier files allowed under module/<verb>/.
 ALLOWED_MODULE_CODE_PREFIX = "verify_"
+# Immutable canon-import archive (see IMPORTED_FROM_CANON.md, 2026-05-10).
+# Holds predecessor `.hexa` snapshots moved out of `dancinlab/canon` during the
+# canon-minimization migration. These files are READ-ONLY historical artifacts
+# (not new code authored in this repo); own 3 permits them because they are
+# provenance, not implementation. Any modification requires both a `.own`
+# update AND a `doc/lineage/origin.md` redirect note.
+CANON_ARCHIVE_DIRS = ["origins", "papers"]
 
 CODE_EXTENSIONS = {".py", ".c", ".h", ".S", ".s"}
 # .hexa code: allowed in cli/, tests/, verify/, and module/<verb>/ if it
@@ -209,6 +219,11 @@ def check_no_rogue_code() -> bool:
         # Allowed top-level dirs.
         if parts[0] in ALLOWED_CODE_DIRS:
             continue
+        # Canon-import archive — immutable predecessor snapshots
+        # (see IMPORTED_FROM_CANON.md). own 3 treats these as provenance,
+        # not new in-repo code.
+        if parts[0] in CANON_ARCHIVE_DIRS:
+            continue
         # Allowed under module/<verb>/ as verify_*.{hexa,py} or
         # *.hexa helper (e.g. solar/real-world-solar-calculator.hexa
         # is a per-verb helper).
@@ -225,10 +240,11 @@ def check_no_rogue_code() -> bool:
         # install.hexa at root is the hx install hook — allowed by hexa.toml.
         if parts == ("install.hexa",):
             continue
-        _fail("no_rogue_code", f"{rel} (not in {ALLOWED_CODE_DIRS} or module/<verb>/verify_*)")
+        _fail("no_rogue_code",
+              f"{rel} (not in {ALLOWED_CODE_DIRS}, canon-archive {CANON_ARCHIVE_DIRS}, or module/<verb>/verify_*)")
         ok = False
     if ok:
-        print("PASS no_rogue_code — code restricted to verify/ tests/ cli/ build/ + module/<verb>/verify_*")
+        print("PASS no_rogue_code — code restricted to verify/ tests/ cli/ build/ + module/<verb>/verify_* (canon-archive origins/ + papers/ exempt)")
     return ok
 
 

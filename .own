@@ -65,6 +65,7 @@
 # - dancinlab/hexa-earth — climate cousin (carbon-capture · environmental-protection)
 #
 # ## recent_strengthenings
+# - 2026-05-13: own 3 canon-archive carve-out. origins/ + papers/ (imported from canon 2026-05-10 per IMPORTED_FROM_CANON.md) declared READ-ONLY canon-archive — exempt from "code only in verify/tests/cli/build" rule because they are provenance snapshots moved out of dancinlab/canon, not new in-repo code. verify/cross_doc_audit.py CANON_ARCHIVE_DIRS skips both. Also added verify/run_all.hexa orchestrator wrapping the two python audits (sister-pattern: hexa-rtsc/hexa-fusion). Closure scoreboard: energy_verify 3/3 + cross_doc_audit 4/4 = 7/7 PASS (lattice-substrate closure, SPEC_FIRST honesty preserved).
 # - 2026-05-07: structural restructure to hexa-sscb pattern. Created core/energy/{spec,domain,doc/}, module/<verb>/ × 14 (moved from root), verify/, build/, doc/{archive,lineage}/, .own (this file), README.ai.md. cli/, tests/, hexa.toml, install.hexa preserved at root. Repo-root README emoji changed from ⚡ to 🔋 (avoid hexa-brain 🧠⚡ collision). own 1-5 land.
 # - 2026-05-07: fusion · antimatter · RT-SC reframed as out-of-scope axes — sibling CLIs (hexa-fusion / hexa-antimatter / hexa-rtsc) called directly; no proxy through hexa-energy. cli/hexa-energy.hexa returns friendly redirect on `fusion`/`antimatter`/`rtsc` subcommands.
 # - 2026-05-06: initial v1.0.0 extraction from canon@c0f1f570. 14-verb / 7-group integration substrate, SPEC_FIRST verdict (0/14 wired).
@@ -125,8 +126,10 @@ own 3 new "hexa-energy-doc-first-code-scope — 코드는 verify/ tests/ cli/ bu
   why doc-first 는 마케팅이 아니라 작자 정책. 4 도메인 (verify/tests/cli/build) 는 "spec 자동 검증" + "ACCEPTANCE checklist 자동화" + "verb 라우팅 dispatcher" + "PDF rebuild" 4 가지 명확한 목적. 다른 위치에 코드가 들어오면 spec drift 위험.
   decl 면제: doc/ 내부의 lineage / archive 경로는 코드 아님 (.md 만). LICENSE / README*.md / CHANGELOG / .gitignore / .own / hexa.toml / install.hexa / 본 own 에 명시된 4 위치는 면제 자동.
   decl 면제: module/<verb>/<verb>.md (spec markdown) 와 module/<verb>/README*.md 는 doc 이므로 면제. module/<verb>/verify_<verb>.hexa 같은 verb-local verifier 는 verify/ 의 sub-helper 로 본다 (예: 현재 module/battery_energy/verify_battery-energy.hexa).
-  note doc/archive/* 는 immutable — 본 own 의 4 허용 위치와 무관하게 "절대 수정 금지" 가 우선 (raw 91 honest C3, doc/archive 는 forensic continuity 스냅샷). 4 코드 위치 안에서도 archive 참조는 read-only.
+  decl 면제 (canon-archive, 2026-05-13 추가): origins/ + papers/ — IMPORTED_FROM_CANON.md 에 따라 2026-05-10 에 dancinlab/canon 에서 이주된 immutable 전임자 스냅샷. 본 repo 의 새 코드가 아닌 provenance 아카이브 이므로 own 3 의 "코드 위치" 규칙에서 면제. 수정 금지 (read-only). verify/cross_doc_audit.py CANON_ARCHIVE_DIRS 가 자동 skip. 새 canon import 추가 시 IMPORTED_FROM_CANON.md + 본 decl + CANON_ARCHIVE_DIRS 3 곳 동시 갱신.
+  note doc/archive/* 는 immutable — 본 own 의 4 허용 위치와 무관하게 "절대 수정 금지" 가 우선 (raw 91 honest C3, doc/archive 는 forensic continuity 스냅샷). 4 코드 위치 안에서도 archive 참조는 read-only. origins/ + papers/ 도 동일 immutable 원칙 적용.
   promoted-at 2026-05-07
+  strengthened-at 2026-05-13 (canon-archive carve-out: origins/ + papers/)
 
 own 4 new "hexa-energy-domain-md-numerical-ssot — 모든 숫자는 core/energy/domain.md 가 SSOT"
   slug hexa-energy-domain-md-numerical-ssot

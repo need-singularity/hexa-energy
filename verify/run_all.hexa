@@ -1,0 +1,86 @@
+#!hexa strict
+// hexa-energy/verify/run_all.hexa — orchestrator (.hexa primary).
+//
+// Single CLI entry that runs both python invariant audits and aggregates
+// pass/fail. Sister-pattern parity with hexa-rtsc / hexa-fusion / hexa-ufo /
+// hexa-cern (which each carry verify/run_all.hexa).
+//
+// hexa-energy is SPEC_FIRST (own 5 — 0/14 verbs wired at v1.0.0), so the
+// "verify" surface here is structural / cross-document only, not empirical:
+//
+//   1. verify/energy_verify.py    — n=14 verb / 7-group lattice audit (3 checks)
+//   2. verify/cross_doc_audit.py  — cross-document consistency audit (4 checks)
+//
+// Total native closure: 3 + 4 = 7 checks. exit 0 = all 7 PASS.
+//
+// PASS does NOT imply any module/<verb>/<verb>.md quantitative claim has been
+// empirically validated. Verdict-honesty obligation (raw#10 C3, own 5).
+//
+// Run:
+//     hexa run verify/run_all.hexa     # exit 0 = all subscripts PASS
+
+let SCRIPTS: [str] = [
+    "verify/energy_verify.py",
+    "verify/cross_doc_audit.py",
+]
+
+fn _file_exists(p: str) -> bool {
+    let r = exec("[ -f \"" + p + "\" ] && echo y || echo n").trim()
+    return r == "y"
+}
+
+fn main() {
+    let mut root = env("HEXA_ENERGY_ROOT")
+    if root.len() == 0 { root = exec("pwd").trim() }
+
+    println("hexa-energy / verify / run_all.hexa — sister-pattern orchestrator")
+    println("  repo root: " + root)
+    println("  scripts: " + str(SCRIPTS.len()))
+    println("")
+
+    let mut passed = 0
+    let mut failed: [str] = []
+
+    for s in SCRIPTS {
+        let path = root + "/" + s
+        if _file_exists(path) == false {
+            println("FAIL [missing] " + s)
+            failed = failed + [s]
+            continue
+        }
+        println("── running " + s + " ──")
+        let rc = exec("python3 \"" + path + "\"; echo __RC=$?").trim()
+        // exec returns combined stdout; we appended __RC=<code> on the last line.
+        // Find the last __RC= marker.
+        let marker = "__RC="
+        let mut idx = rc.len() - 1
+        let mut rc_str = ""
+        // simple suffix grab (assumes well-formed last line "__RC=N").
+        if rc.len() >= marker.len() {
+            let tail_start = rc.len() - 6  // up to "__RC=NNN" with N digits ≤ 3
+            // fallback: just check tail substring for marker.
+        }
+        // Pragmatic fallback: re-run with explicit rc capture via shell.
+        let rc2 = exec("python3 \"" + path + "\" > /dev/null 2>&1; echo $?").trim()
+        if rc2 == "0" {
+            passed = passed + 1
+            println("PASS " + s)
+        } else {
+            failed = failed + [s]
+            println("FAIL " + s + " (exit " + rc2 + ")")
+        }
+        println("")
+    }
+
+    println("──────────────────────────────────────────────────────────")
+    println("__HEXA_ENERGY_RUN_ALL__ " + str(passed) + "/" + str(SCRIPTS.len()) + " scripts PASS")
+    if failed.len() > 0 {
+        println("  failed: " + str(failed))
+        exit(1)
+    }
+    println("  closure: 7/7 native checks PASS (3 lattice + 4 cross-doc)")
+    println("  honesty: SPEC_FIRST verdict preserved (own 5 — 0/14 verbs wired)")
+    exit(0)
+}
+
+main()
