@@ -68,7 +68,7 @@ non-zero if any surface diverges.
 
 ---
 
-## Repository layout
+## Repo layout
 
 ```
 hexa-energy/
