@@ -1,4 +1,23 @@
-# 🔋 hexa-energy — Energy substrate (HEXA family)
+<p align="center"><img src="docs/logo.svg" width="140" alt="hexa-energy"></p>
+
+<h1 align="center">⚡ hexa-energy</h1>
+
+<p align="center"><strong>HEXA-Power Energy Substrate</strong> — energy systems · 14 verbs · 7 groups · n=14 lattice</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue"></a>
+  <img alt="Sibling" src="https://img.shields.io/badge/sibling-hexa--chip%20·%20hexa--mind%20·%20hexa--earth-blueviolet">
+  <img alt="Spec" src="https://img.shields.io/badge/spec-v1.0-success">
+  <img alt="Verbs" src="https://img.shields.io/badge/verbs-14%20·%207%20groups-informational">
+  <img alt="Closure" src="https://img.shields.io/badge/closure-7%2F7%20PASS-brightgreen">
+  <img alt="Wired" src="https://img.shields.io/badge/wired-0%2F14%20SPEC--FIRST-orange">
+</p>
+
+<p align="center">energy · battery · nuclear · grid · fuel-cell · thermal · mining · meta · HVAC · datacenter-reactor · ESS · n=14 lattice</p>
+
+---
+
+# hexa-energy — Energy substrate (HEXA family)
 
 > **14-verb / 7-group integration substrate** governed by the **n=14 verb
 > lattice**. Battery + nuclear + grid + fuel-cell + thermal + mining + meta.
@@ -165,7 +184,6 @@ hexa-energy help            # full --help (subcommands + env vars + cross-link)
 
 Native closure pattern = **7/7 PASS** across two stdlib-only audits
 (SPEC_FIRST substrate: structural / cross-document checks only — no empirical
-claim is validated; verdict-honesty per own 5 + raw#10 C3):
 
 ```bash
 # Sister-pattern orchestrator (chains the two python audits):
