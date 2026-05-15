@@ -46,7 +46,7 @@
 @I id001 := "hexa-energy" :: identity-claim [d=2026-05-14 active]
   kind = "HEXA-Power family — energy systems"
   brief = "HEXA-Power family · energy systems"
-  parent = "dancinlab/echoes"
+  parent = "dancinlab"
 
 @L l1 := "repo-layout" :: structure [active]
   .roadmap.hexa_energy -> "file"
