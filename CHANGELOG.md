@@ -33,7 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **README** with cross-link banner (fusion → `hexa-fusion`, RT-SC →
   `hexa-rtsc`, climate → `hexa-earth`) on the very first line.
 
-### Honest C3 caveats (raw#10)
 
 1. v1.0.0 is **spec-first** — 0/14 verbs ship a working `.hexa` kernel.
 2. Fusion is intentionally **out of scope** (→ `hexa-fusion`).

@@ -14,7 +14,6 @@
 // Total native closure: 3 + 4 = 7 checks. exit 0 = all 7 PASS.
 //
 // PASS does NOT imply any module/<verb>/<verb>.md quantitative claim has been
-// empirically validated. Verdict-honesty obligation (raw#10 C3, own 5).
 //
 // Run:
 //     hexa run verify/run_all.hexa     # exit 0 = all subscripts PASS

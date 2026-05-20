@@ -76,7 +76,6 @@ POLICY §1.3.)
    *system-engineering*-heavy of the three. Risk: low-medium (proven
    pilot, scaling is the binding step).
 
-## §5 Honest caveats (raw#10 C3)
 
 - The 8-scale BATTERY ladder is organising vocabulary; the only real
   invariant is electrochemistry (cell-level Wh/kg / Wh/L / cycle life).

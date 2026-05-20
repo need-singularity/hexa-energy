@@ -57,7 +57,6 @@ hexa-energy mining
 hexa-energy meta
 ```
 
-## Honest C3 caveats (raw#10)
 
 1. **Spec-first** — 0/14 verbs ship a working `.hexa` kernel at v1.0.0; markdown specs only.
 2. **Fusion out of scope** — see `hexa-fusion`.

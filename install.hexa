@@ -10,15 +10,12 @@
 //
 // Mirrors hexa-bio/install.hexa pattern (sister substrate, 2026-05-04).
 //
-// Responsibilities (each idempotent, raw#9 STRICT — no .py creation):
 //   1. Pre-install: no python deps required (v1.0.0 is spec-first; no
 //      numerical kernels yet). Exit 0.
 //   2. Post-install: run `hexa-energy selftest` via the freshly-staged
 //      cli/hexa-energy.hexa. Selftest output captured; non-PASS = warn-only
 //      (not a blocker — selftest just counts the 14-verb spec directories).
 //
-// raw#9 hexa-only, raw#11 snake_case, raw#15 no-hardcode.
-// raw#10 honest C3: see hexa-energy/README.md "Status" section.
 
 fn run_quick_selftest(root: str) -> bool {
     let cli = root + "/cli/hexa-energy.hexa"

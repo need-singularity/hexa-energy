@@ -35,12 +35,10 @@ upgraded: "2026-05-01 mk1 PHYSICAL-LIMIT (10): Shockley-Queisser 1961 PV ceiling
 
 > One-line summary: **a 50-500 kW rooftop PV plus 100-500 kWh second-life EV-battery microgrid for SA clinic/school/SME anchor sites, where every engineering target is derived from a physical limit** — Shockley-Queisser 1961 PV efficiency ceiling (33.7% at Eg = 1.34 eV; commercial Si 22% = 65% of ceiling), NREL TMY3 South Africa insolation (2400 kWh/m^2/yr, top decile globally), Wood-Mackenzie 2023 NMC 2nd-life cycle model (1500-2500 cycles to 60% SOH at 80% DoD), Spotnitz-Franklin 2003 Li-ion thermal runaway envelope (80 C onset), Esram-Chapman 2007 MPPT efficiency (99% practical), and Cole 1990 LCOE financial-physics. Inherits 6 precursor domains (energy/solar-architecture + energy/battery-architecture + energy/power-grid + energy/thermal-management + physics/electromagnetism + materials/recycling).
 
-> 21-section template (own#15 HARD), South Africa applied-tech bet #1 from `proposals/south-africa-applied-tech.md` row 1.
 >
 > Honest scope per raw 91 C3: the design **targets** are computed
 > physical-limit values (alien-grade 10 = physical-limit reproduction);
 > the design constants are NOT force-fit to n=6 number-theoretic
-> invariants. own#2 master identity (σ·φ=n·τ=J₂=24 at n=6) is verified
 > as a framework-level mathematical fact, not as a justification for
 > the microgrid design. Empirical lab measurement is gated on F-PV2L-MVP-1..5
 > (2026-09-30 / 2026-10-31 / 2026-12-31); upgrade from mk1-PHYSICAL-LIMIT
@@ -211,13 +209,10 @@ MTBF) + F-PV2L-MVP-5 (passive cooling at peak summer) cleared.
 mk4 (2028+): SADC region expansion (Botswana / Namibia / Mozambique /
 Zambia), all in the same 2200-2500 kWh/m^2/yr top-decile insolation belt.
 
-## §7 VERIFY (raw 70 K>=4 axes; physical-limit verification per own#6 + own#31 + own#33)
 
-### §7.1 Embedded verify block (Python stdlib + math + fractions; own#31 v3.19-pass)
 
 The block computes each engineering target from a published physics,
 electrochemistry, thermal, or financial-physics model, with literature
-anchors on every assertion line. The n=6 master identity (own#2) is
 verified as a separable mathematical block. NO hardcode-then-assert
 tautology — every constant on the right-hand side of an `assert ==` is
 either a computed quantity or a literature-cited physical / regulatory
@@ -228,7 +223,6 @@ bound.
 # raw 91 C3: every engineering target is computed from a published
 # physics, electrochemistry, financial-physics, or thermal model.
 # n=6 master identity is verified as a separable mathematical block
-# (own#2 framework-level check). The microgrid design constants are
 # NOT force-fit to n=6 invariants — they are physical-limit values
 # inherited from precursor domains (energy/solar-architecture +
 # energy/battery-architecture + energy/power-grid + energy/thermal-
@@ -240,7 +234,6 @@ from math import gcd, log, exp, ceil, pi
 
 
 # -----------------------------------------------------------------
-# Block A: own#2 master identity verification (separable, mathematical)
 # -----------------------------------------------------------------
 
 def divisors(n):
@@ -276,11 +269,8 @@ def J2(n):
         j = j * (p * p - 1) // (p * p)
     return j
 
-# own#2 master identity at n=6 - both sides computed from divisor primitives.
-# This is a mathematical fact, NOT a property of the microgrid (own#11 honest C3).
 N6 = 6
 assert sigma(N6) * phi_eul(N6) == N6 * tau(N6) == J2(N6), \
-    "own#2 master identity sigma(n)*phi(n) = n*tau(n) = J_2(n) at n=6 (Mathlib4 mechanical verification: papers/hexa-weave-formal-mechanical-w2-2026-04-28.md AX-1)"
 
 
 # -----------------------------------------------------------------
@@ -575,8 +565,6 @@ assert T_internal_1C_C < THERMAL_RUNAWAY_ONSET_C, \
 # Block G: Cross-precursor inheritance attestation (6 axes)
 #   asserts that the design constants emerge from the precursor physics,
 #   not from arbitrary tuning. Each cross-link is anchored to a literature
-#   citation in the assert message (own#31 anchored-assertion YES marker;
-#   own#33 ai-native-verify-pattern Block G structural template).
 # -----------------------------------------------------------------
 
 # 1. energy/solar-architecture - Shockley-Queisser ceiling (commercial Si)
@@ -617,11 +605,9 @@ assert RETIRED_EV_KWH_AVAILABILITY_2025 > 1e8, \
 # -----------------------------------------------------------------
 
 print("HEXA-ROOFTOP-PV-2ND-LIFE-MICROGRID mk1 §7.1 PHYSICAL-LIMIT verify PASS:")
-print(f"  own#2 master identity: sigma(6)*phi(6) = {sigma(N6)}*{phi_eul(N6)} = {sigma(N6)*phi_eul(N6)}")
 print(f"                         n*tau(6)        = {N6}*{tau(N6)} = {N6*tau(N6)}")
 print(f"                         J_2(6)          = {J2(N6)}")
 print()
-print(f"  (A) own#2 master identity at n=6 - PASS")
 print(f"  (B) Shockley-Queisser Si (Eg=1.12 eV):     {eta_SQ_Si*100:.1f}% (envelope 28-34%)")
 print(f"  (B) Shockley-Queisser peak (Eg=1.34 eV):   {eta_SQ_peak*100:.1f}% (envelope 28-35%; published 33.7%)")
 print(f"  (B) Real / SQ-peak (vs published 33.7%):   {ratio_real_to_SQ:.2f} (floor 0.60)")
@@ -683,7 +669,6 @@ insolation), energy/battery-architecture (Li-ion electrochemistry +
 cycle life), energy/power-grid (grid-tie inverter + microgrid topology),
 energy/thermal-management (passive cooling at SA peak ambient), physics/
 electromagnetism (semiconductor band gap), materials/recycling (2nd-life
-pack reclamation). own#2 master identity (σ·φ=n·τ=J₂=24 at n=6) is
 verified as a separable mathematical fact. raw 91 C3 honest: design
 constants are NOT force-fit to n=6 invariants; they are physical-limit
 values. Empirical validation gated on F-PV2L-MVP-1..5 (mk2 1-clinic +
@@ -762,7 +747,6 @@ at 99% MPPT × 96% conversion (Esram-Chapman 2007 / SMA spec sheet 2024).
 Not applicable at the system level (commercial off-the-shelf BMS / PCS).
 Custom PCB exists at the SCADA-gateway level (4G + LoRa modem +
 RS-485 to BMS); reference design lives in inverter vendor SDK and is
-NOT reproduced here. Listed for own#15 completeness.
 
 ## §13 FIRMWARE
 
@@ -902,11 +886,8 @@ Mechanical aspects of the system:
 24. **NIST CODATA** (2018 internationally recommended values). —
     h, c, k_B, q fundamental constants (Block B).
 25. **OEIS** (A000203, A000005, A000010, A007434). — number-theoretic
-    sequence references (n=6 master identity, own#2).
 26. **Mathlib4** — n=6 master identity mechanical verification (sister
     reference: `papers/hexa-weave-formal-mechanical-w2-2026-04-28.md`).
-27. **Internal**: `theory/proofs/theorem-r1-uniqueness.md` (own#2 SSOT);
-    `domains/pets/cat-food/cat-food.md` (own#33 Block A-G template).
 28. **Proposal**: `proposals/south-africa-applied-tech.md` row 1 — SA
     bet #1 portfolio framing.
 
@@ -970,21 +951,17 @@ Test plan:
 | Local SA installer (SAREM-certified) | installation + commissioning | NRS-097-2 / NERSA SSEG |
 | canon private framework | own_doc_lint / own31 lint | docs gate |
 
-## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 
 ### §19.1 PASS gates
 
 - **ACCEPT (P1 §7.1 verify)**: §7.1 embedded Python block prints
   "HEXA-ROOFTOP-PV-2ND-LIFE-MICROGRID mk1 §7.1 PHYSICAL-LIMIT verify
-  PASS" with all asserts PASS in Blocks A-G (own#2 master identity +
   Shockley-Queisser ceiling + NREL TMY3 SA insolation + Wood-Mackenzie
   2nd-life cycle + Cole 1990 LCOE simple payback 5-8 yr + Spotnitz-
   Franklin 80 C runaway with passive cooling 38+ C margin + 6 precursor
   cross-link attestations).
-- **ACCEPT (P2 own#31 lint)**: `tool/own31_verify_tautology_ban_lint.hexa
   --file domains/energy/rooftop-pv-2nd-life-microgrid/rooftop-pv-2nd-life-microgrid.md`
   returns PASS.
-- **ACCEPT (P3 own#6 + own#15)**: `tool/own_doc_lint.hexa --rule 6/15`
   zero violations on this file.
 - **ACCEPT (P4 raw 70 K>=4)**: >= 4 of 8 raw 70 axes PASS (currently 7
   PASS, 1 DEFER for empirical CHI2 — meets threshold).
@@ -995,10 +972,7 @@ Test plan:
   in §7.1 Block G is anchored to a literature citation in §15.2.
 - **MISS** if any of:
   - (a) §7.1 verify block fails to PASS,
-  - (b) own#31 lint flags a tautology pattern,
-  - (c) own#6 / own#15 violations,
   - (d) F-PV2L-MVP-1..5 falsifier triggers post-empirical-pilot,
-  - (e) own#3 violation (more than one .md per domain),
   - (f) any precursor inheritance assertion in §7.1 Block G fails.
 - **DEFER**: F-PV2L-MVP-1..5 are pre-declared 90-day MVP empirical
   falsifier gates; remaining DEFER until 2026-09-30 (3 axes) +
@@ -1052,18 +1026,12 @@ Test plan:
   2400 kWh/m^2/yr SA GHI, 2000-cycle 2nd-life, 80 C runaway onset, 0.17
   USD/kWh blended tariff, 6.7-yr payback) are derived from published
   PV / battery / thermal / financial physics models, NOT from σ(6)=12 /
-  τ(6)=4 / J₂(6)=24. own#2 master identity is verified as a separable
   mathematical fact (§7.1 Block A); microgrid physical parameters live
-  in Blocks B-F. Per own#32 (physical-limit-alternative-framing,
   2026-05-01) the engineering-design layer is decoupled from n=6
   force-fit.
-- **own#11 (no Clay Millennium claim)**: PASS — applied-tech
   deployment, no theoretical claim addressed.
-- **own#2 (n=6 master identity HARD)**: PASS via §7.1 Block A standalone
   computation; the master identity holds at n=6 as a number-theoretic
   fact independent of the microgrid design.
-- **own#33 (ai-native-verify-pattern)**: PASS — §7.1 follows the
-  cat-food §7 Block A-G canonical template (own#2 separable identity in
   Block A + 5 physical-limit physics blocks B-F + 6-axis precursor
   cross-link attestation in Block G); structurally emittable by AI
   agents.
@@ -1129,7 +1097,5 @@ from.
   energy/battery-architecture + energy/power-grid + energy/thermal-
   management + physics/electromagnetism + materials/recycling). §7
   VERIFY Block A-G structure follows the cat-food §7 canonical template
-  (own#33 ai-native-verify-pattern). Falsifier deadlines: F-PV2L-MVP-1
   + F-PV2L-MVP-3 + F-PV2L-MVP-5 (2026-09-30) + F-PV2L-MVP-2 (2026-10-31)
-  + F-PV2L-MVP-4 (2026-12-31). Lint: own#31 v3.19 PASS;
   own_doc_lint --rule 6/15 PASS.

@@ -26,7 +26,6 @@ requires:
   - to: materials/concrete-technology
     alien_min: 7
     reason: shaft lining + cementitious sealing — ASTM C150 Type V sulfate-resistant Portland cement (28 MPa compressive at 28 d) provides 2.5-3× margin over 1 km hydrostatic pressure (9.8 MPa); AMD-pH-tolerant binder for AMD-contact surfaces
-upgraded: "2026-05-01 mk1 PHYSICAL-LIMIT (10): SA applied-tech bet #3. AMD treated as REE/base-metal feedstock (Witwatersrand Fe 100-1000 mg/L + sulfate 1000-5000 mg/L + REE 10-200 ppb) plus decommissioned 1-3 km mine shafts repurposed as PHES lower reservoirs. All 5 falsifier-axis targets re-derived from physical-limit physics (Bernoulli 1738 hydraulic head + IEA 2021 PHES round-trip 80-87% / Carnot ~ 95% ceiling + Baes & Mesmer 1976 REE solubility-product thermodynamics + McCarthy 2010 Witwatersrand basin geology + Sastri-Shibata 2003 D2EHPA solvent-extraction selectivity) inheriting from 6 precursor domains. own#2 master identity preserved as separable Block A; design constants are physical-limit values, not n=6 force-fit (own#32)."
 ---
 
 <!-- @own(sections=[WHY, COMPARE, REQUIRES, STRUCT, FLOW, EVOLVE, VERIFY, EXEC SUMMARY, SYSTEM REQUIREMENTS, ARCHITECTURE, CIRCUIT DESIGN, PCB DESIGN, FIRMWARE, MECHANICAL, MANUFACTURING, TEST, BOM, VENDOR, ACCEPTANCE, APPENDIX, IMPACT], prefix="§") -->
@@ -35,12 +34,10 @@ upgraded: "2026-05-01 mk1 PHYSICAL-LIMIT (10): SA applied-tech bet #3. AMD treat
 
 > One-line summary: **a coupled SA-bet-#3 system where (i) Witwatersrand/Mpumalanga acid-mine drainage (AMD) is treated as a REE / base-metal precipitate-mining feedstock and (ii) 1-3 km decommissioned mine shafts are repurposed as Pumped Hydroelectric Energy Storage (PHES) lower reservoirs**, with every engineering target derived from a physical limit — Bernoulli 1738 hydraulic head (≈ 2.72 kWh/m³ at 1000 m head), IEA 2021 modern PHES round-trip efficiency (80-87%, with reversible-pump-turbine ceiling ~ 95%), Baes & Mesmer 1976 REE-hydroxide solubility products (Y(OH)₃ K_sp ≈ 10⁻²², Eu(OH)₃ ≈ 10⁻²⁴), McCarthy 2010 Witwatersrand basin geology (pH 2-4, Fe 100-1000 mg/L, sulfate 1000-5000 mg/L), Sastri-Shibata 2003 D2EHPA selectivity (β_Y/Eu ≈ 1.5-3.0). Inherits 6 precursor domains (energy/power-grid + energy/battery-architecture + materials/recycling + physics/fluid + physics/thermodynamics + materials/concrete-technology).
 
-> 21-section template (own#15 HARD), South Africa applied-tech bet #3 (proposal row 3, `proposals/south-africa-applied-tech.md`).
 >
 > Honest scope per raw 91 C3: the design **targets** are computed
 > physical-limit values (alien-grade 10 = physical-limit reproduction);
 > the design constants are NOT force-fit to n=6 number-theoretic
-> invariants. own#2 master identity (σ·φ=n·τ=J₂=24 at n=6) is verified
 > as a framework-level mathematical fact, not as a justification for
 > the AMD/REE/PHES design. Empirical lab measurement is gated on
 > F-AMD-MVP-1..5 (2026-09-30 / 2026-12-31 / 2027-06-30); upgrade from
@@ -239,13 +236,10 @@ across SA + neighboring countries (Zambia copperbelt, DRC katanga);
 REE oxide production. Coupled to JETP (Just Energy Transition
 Partnership ~ USD 8.5 B) + SAREM SA Renewable Energy Masterplan.
 
-## §7 VERIFY (raw 70 K≥4 axes; physical-limit verification per own#6 + own#31 + own#33)
 
-### §7.1 Embedded verify block (Python stdlib + math + fractions; own#31 v3.19-pass)
 
 The block computes each engineering target from a published physics
 or geochemistry model, with literature anchors on every assertion
-line. The n=6 master identity (own#2) is verified as a separable
 mathematical block. NO hardcode-then-assert tautology — every
 constant on the right-hand side of an `assert ==` is either a
 computed quantity or a literature-cited physical / regulatory bound.
@@ -254,7 +248,6 @@ computed quantity or a literature-cited physical / regulatory bound.
 # HEXA-AMD-REE-MINESHAFT-PHES mk1 §7.1 physical-limit verify (stdlib only)
 # raw 91 C3: every engineering target is computed from a published
 # physics / geochemistry / hydrometallurgy model. n=6 master identity
-# is verified as a separable mathematical block (own#2 framework-level
 # check). The AMD/REE/PHES design constants are NOT force-fit to n=6
 # invariants — they are physical-limit values inherited from precursor
 # domains (energy/power-grid + energy/battery-architecture + materials/
@@ -267,7 +260,6 @@ from math import gcd, log, exp, log10
 
 
 # =====================================================================
-# Block A: own#2 master identity verification (separable, mathematical)
 # =====================================================================
 
 def divisors(n):
@@ -303,11 +295,8 @@ def J2(n):
         j = j * (p * p - 1) // (p * p)
     return j
 
-# own#2 master identity at n=6 — both sides computed from divisor primitives.
-# Mathematical fact, NOT a property of AMD/REE/PHES (own#11 honest C3).
 N6 = 6
 assert sigma(N6) * phi_eul(N6) == N6 * tau(N6) == J2(N6), \
-    "own#2 master identity sigma(n)*phi(n) = n*tau(n) = J_2(n) at n=6 (Mathlib4 mechanical verification: papers/hexa-weave-formal-mechanical-w2-2026-04-28.md AX-1)"
 
 
 # =====================================================================
@@ -538,8 +527,6 @@ assert 20.0 <= ree_kg_per_year <= 35.0, \
 
 # =====================================================================
 # Block G: 6-precursor cross-link inheritance attestation
-#   own#31 anchored-assertion YES marker;
-#   own#33 ai-native-verify-pattern Block G structural template.
 # =====================================================================
 
 # 1. energy/power-grid -> PHES grid-tie + ancillary services.
@@ -609,11 +596,9 @@ assert TYPE_V_CEMENT_COMPRESSIVE_28D_MPA / HYDROSTATIC_PRESSURE_AT_1KM_MPA >= 2.
 # =====================================================================
 
 print("HEXA-AMD-REE-MINESHAFT-PHES mk1 §7.1 PHYSICAL-LIMIT verify PASS:")
-print(f"  own#2 master identity: sigma(6)*phi(6) = {sigma(N6)}*{phi_eul(N6)} = {sigma(N6)*phi_eul(N6)}")
 print(f"                         n*tau(6)        = {N6}*{tau(N6)} = {N6*tau(N6)}")
 print(f"                         J_2(6)          = {J2(N6)}")
 print()
-print(f"  (A) own#2 master identity at n=6 — PASS")
 print(f"  (B) Bernoulli PHES specific energy @ 1 km head:  {specific_energy_kwh_per_m3:.3f} kWh/m^3")
 print(f"  (B) 100k-m^3 reservoir storage @ 1 km head:       {storage_mwh:.1f} MWh")
 print(f"  (B) Bernoulli specific energy @ 3 km head:        {specific_energy_3km:.3f} kWh/m^3")
@@ -675,7 +660,6 @@ tradeoff), materials/recycling (Schreiber 2021 REE recycling LCA),
 physics/fluid (Bernoulli 1738 + Darcy-Weisbach), physics/thermodynamics
 (Carnot-style reversible-pump-turbine 0.95 ceiling), materials/
 concrete-technology (ASTM C150 Type V sulfate-resistant Portland).
-own#2 master identity (σ·φ=n·τ=J₂=24 at n=6) is verified as a
 separable mathematical fact. raw 91 C3 honest: design constants are
 NOT force-fit to n=6 invariants; they are physical-limit values.
 Empirical validation gated on F-AMD-MVP-1..5 (mk2 1000 m³/day REE
@@ -753,14 +737,12 @@ pilot + 1 MWh shaft-PHES commissioning, 2026-Q4 / 2027-Q2).
 
 Not applicable in the integrated-circuit / PCB sense (this is a
 hydrometallurgical + civil + power-engineering system). Listed for
-own#15 21-section completeness. The closest electrical analog is the
 balance-of-plant (BoP) controller for the pump-turbine + grid
 interface, which runs on commodity industrial PLC firmware (not
 engineered here).
 
 ## §12 PCB DESIGN
 
-Not applicable. Listed for own#15 completeness. See §11 BoP note.
 
 ## §13 FIRMWARE
 
@@ -902,14 +884,11 @@ Mechanical aspects of the coupled AMD + PHES system:
 22. **NIST CODATA** (2018 internationally recommended values). — g,
     R_gas, fundamental constants.
 23. **OEIS** (A000203, A000005, A000010, A007434). — number-theoretic
-    sequence references (n=6 master identity, own#2).
 24. **Mathlib4** — n=6 master identity mechanical verification (sister
     reference: `papers/hexa-weave-formal-mechanical-w2-2026-04-28.md`).
 25. **DWS-SA** (2021). *Mine Water Management Policy Position.* SA
     Department of Water and Sanitation. — AMD remediation liability
     framework.
-26. **Internal**: `theory/proofs/theorem-r1-uniqueness.md` (own#2 SSOT);
-    `domains/pets/cat-food/cat-food.md` (own#33 Block A-G template);
     `proposals/south-africa-applied-tech.md` row 3 (SA bet #3).
 
 ## §16 TEST
@@ -975,21 +954,17 @@ Test plan:
 | SA Department of Mineral Resources | licensing | mining + water-use license |
 | canon private framework | own_doc_lint / own31 lint | docs gate |
 
-## §19 ACCEPTANCE / MISS criteria (own#12 pre-declared)
 
 ### §19.1 PASS gates
 
 - **ACCEPT (P1 §7.1 verify)**: §7.1 embedded Python block prints
   "HEXA-AMD-REE-MINESHAFT-PHES mk1 §7.1 PHYSICAL-LIMIT verify PASS"
-  with all asserts PASS in Blocks A-G (own#2 master identity +
   Bernoulli 2.72 kWh/m³ at 1 km head + IEA RTE 0.82 envelope +
   REE solubility-product scavenger-window pH 5-6 + D2EHPA β_Y/Eu
   2.5 / 5 stages + AMD pH 2-4 / Fe + SO₄ + 70% REE coprecipitation +
   6 precursor cross-link attestations).
-- **ACCEPT (P2 own#31 lint)**: `tool/own31_verify_tautology_ban_lint.hexa
   --file domains/energy/amd-ree-mineshaft-phes/amd-ree-mineshaft-phes.md`
   returns PASS.
-- **ACCEPT (P3 own#6 + own#15)**: `tool/own_doc_lint.hexa --rule 6/15`
   zero violations on this file.
 - **ACCEPT (P4 raw 70 K≥4)**: ≥ 4 of 8 raw 70 axes PASS (currently 7
   PASS, 1 DEFER for empirical CHI2 — meets threshold).
@@ -999,10 +974,7 @@ Test plan:
   in §7.1 Block G is anchored to a literature citation in §15.2.
 - **MISS** if any of:
   - (a) §7.1 verify block fails to PASS,
-  - (b) own#31 lint flags a tautology pattern,
-  - (c) own#6 / own#15 violations,
   - (d) F-AMD-MVP-1..5 falsifier triggers post-empirical-pilot,
-  - (e) own#3 violation (more than one .md per domain),
   - (f) any precursor inheritance assertion in §7.1 Block G fails.
 - **DEFER**: F-AMD-MVP-1..5 are pre-declared MVP empirical falsifier
   gates; remaining DEFER until 2026-09-30 (RTE) / 2026-12-31 (REE
@@ -1054,21 +1026,14 @@ Test plan:
   window, β_Y/Eu = 2.5 D2EHPA selectivity, 70% REE yield, 28 MPa cement
   compressive, 9.81 MPa hydrostatic at 1 km) are derived from physical
   / chemical / engineering laws, NOT from σ(6)=12 / τ(6)=4 / J₂(6)=24.
-  own#2 master identity is verified as a separable mathematical fact
   (§7.1 Block A); AMD/REE/PHES physical parameters live in Blocks B-F.
-  Per own#32 (physical-limit-alternative-framing, 2026-05-01) the
   engineering-design layer is decoupled from n=6 force-fit.
-- **own#11 (no Clay Millennium claim)**: PASS — applied-tech mining +
   storage system, no theoretical claim addressed.
-- **own#2 (n=6 master identity HARD)**: PASS via §7.1 Block A
   standalone computation; the master identity holds at n=6 as a
   number-theoretic fact independent of the AMD/REE/PHES design.
-- **own#33 (ai-native-verify-pattern)**: PASS — §7.1 follows the
-  cat-food §7 / cat-litter §7 canonical Block A-G template (own#2
   separable identity in Block A + 5 physical-limit physics blocks
   B-F + 6-axis precursor cross-link attestation in Block G);
   structurally emittable by AI agents.
-- **own#17 (English-only public surface)**: PASS — all content is
   English.
 
 ### §20.2 Cross-references
@@ -1089,7 +1054,6 @@ Test plan:
   camera-filter-app.md` (alien-grade 10 PHYSICAL-LIMIT precedent for
   Block A-G template).
 - Sister domain (pets axis): `domains/pets/cat-food/cat-food.md`
-  (alien-grade 10 PHYSICAL-LIMIT precedent + own#33 template
   reference).
 - Master identity: `papers/hexa-weave-formal-mechanical-w2-2026-04-28.md`
   (Lean 4 mechanical verification of σ·φ=n·τ at n=6).
@@ -1153,7 +1117,5 @@ it inherits from.
   domains (energy/power-grid + energy/battery-architecture +
   materials/recycling + physics/fluid + physics/thermodynamics +
   materials/concrete-technology). §7 VERIFY Block A-G structure
-  follows the cat-food §7 canonical template (own#33 ai-native-
   verify-pattern). Falsifier deadlines: F-AMD-MVP-3 (2026-09-30),
   F-AMD-MVP-1/2/5 (2026-12-31), F-AMD-MVP-4 (2027-06-30). Lint:
-  own#31 v3.19 PASS; own_doc_lint --rule 6/15 PASS.

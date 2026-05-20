@@ -26,9 +26,6 @@
 // Root resolution: $HEXA_ENERGY_ROOT env, else inferred from $0 dirname.
 //
 // Constraints:
-//   raw#9   — hexa-only orchestration; no python kernels at v1.0.0
-//   raw#15  — write-confined (audit log only)
-//   raw#10  — honest C3 caveats embedded
 //
 // Cost: $0 (Mac local; spec-first dispatcher, no numerical workload).
 //
@@ -114,11 +111,9 @@ fn _count_present_verbs() -> int {
     return n
 }
 
-// ─── caveat printer (raw#10 honest C3) ───
 
 fn _print_caveats() {
     println("")
-    println("--- caveats (raw#10 C3) ---")
     println("  1. v1.0.0 is SPEC-FIRST: 0/14 verbs ship a working .hexa kernel.")
     println("     All 14 verb directories contain markdown specs extracted from")
     println("     canon/domains/energy/ @ c0f1f570 (no numerical impl).")
